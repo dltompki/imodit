@@ -12,7 +12,7 @@ const meta = {
     layout: "centered",
   },
   argTypes: {
-    setState: { type: 'function', control: false },
+    setState: { type: "function", control: false },
   },
 } satisfies Meta<typeof BottomNavBar>;
 

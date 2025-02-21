@@ -1,10 +1,10 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import QrCodeIcon from '@mui/icons-material/QrCode';
-import DrawIcon from '@mui/icons-material/Draw';
-import MenuBookIcon from '@mui/icons-material/MenuBook';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import BottomNavigation from "@mui/material/BottomNavigation";
+import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+import QrCodeIcon from "@mui/icons-material/QrCode";
+import DrawIcon from "@mui/icons-material/Draw";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
 
 enum NavBarState {
   None = -1,
@@ -14,7 +14,6 @@ enum NavBarState {
 }
 
 export function BottomNavBar() {
-
   // TODO: Implement logic to determine which page we are on
   const selected = NavBarState.None;
 
@@ -25,7 +24,7 @@ export function BottomNavBar() {
         value={selected}
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         onChange={(_event, newValue: NavBarState) => {
-            // Need to implement logic to determine which page to navigate to
+          // Need to implement logic to determine which page to navigate to
         }}
       >
         <BottomNavigationAction label="Learn" icon={<MenuBookIcon />} />
