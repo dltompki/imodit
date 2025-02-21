@@ -1,5 +1,5 @@
-import { ArrowBackIos } from "@mui/icons-material"
-import { AppBar, IconButton, Toolbar, Typography } from "@mui/material"
+import { ArrowBackIos, Home } from "@mui/icons-material"
+import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material"
 import { useEffect, useState } from "react"
 
 interface TopbarProps{
@@ -9,14 +9,16 @@ interface TopbarProps{
 export const Topbar: React.FC<TopbarProps> = (props: TopbarProps) => {
 
     const [title, setTitle] = useState("Get Started")
+    const [back, setBack] = useState(false)
 
     useEffect(() => {
         function parseRoute(){
             const path = props.theRoute.split("/")
-            if (path.length == 0){
+            if (path[path.length - 1] == ""){
                 return
             }
-            setTitle(path[path.length - 1])
+            setBack(path.length > 2)
+            setTitle(`${path[path.length - 1].charAt(0).toUpperCase() + path[path.length - 1].substring(1)}`)
         }
         parseRoute()
     }, [props.theRoute])
@@ -26,15 +28,15 @@ export const Topbar: React.FC<TopbarProps> = (props: TopbarProps) => {
         <Toolbar sx={{flex: 1, justifyContent: "space-between"}}>
             <Typography>
                 <IconButton>
-                    {props.nav ? <ArrowBackIos/> : <></>}
+                    {back ? <ArrowBackIos/> : <Home/>}
                 </IconButton>
             </Typography>
             <Typography>
                 {title}
             </Typography>
-            <Typography>
+            <Button variant="text" sx={{color: "white"}}>
                 Cancel
-            </Typography>
+            </Button>
         </Toolbar>
     </AppBar>
 )

@@ -23,20 +23,8 @@ export const Learn: Story = {
     }
 }
 
-export const LearnCar: Story = {
-    args: {
-        theRoute: "/learn/toyota-crown"
-    }
-}
-
 export const Create: Story = {
     args: {
         theRoute: "/create"
-    }
-}
-
-export const Instructions: Story = {
-    args : {
-        theRoute: "/create/instruction"
     }
 }
