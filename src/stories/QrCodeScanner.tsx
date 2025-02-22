@@ -1,19 +1,13 @@
-import { QrReader } from "@fjhonda/react-qr-reader";
-import { Result } from '@zxing/library';
-
+import { IDetectedBarcode, Scanner } from '@yudiel/react-qr-scanner';
 
 export function QrCodeScanner() {
-    function onScan(result: Result | null | undefined, _error: any) {
-        if (result) {
-            console.log(result.getText());
-            // TODO: go to the right page
-
-        }
+    function onScan(codes: IDetectedBarcode[]) {
+        console.log(codes);
     }
 
     return (
         <div>
-            <QrReader onResult={onScan}/>
+            <Scanner onScan={onScan}/>
         </div>
     );
 }

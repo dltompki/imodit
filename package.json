@@ -15,10 +15,10 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "@fjhonda/react-qr-reader": "github:fjhonda/react-qr-reader",
     "@fontsource/roboto": "^5.1.1",
     "@mui/icons-material": "^6.4.5",
     "@mui/material": "^6.4.5",
+    "@yudiel/react-qr-scanner": "^2.2.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-webcam": "^7.2.0"
