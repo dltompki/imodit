@@ -22,7 +22,7 @@ export function BottomNavBar() {
         showLabels
         value={selected}
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        onChange={(_event, newValue: NavBarState) => {
+        onChange={(_event, _newValue: NavBarState) => {
           // Need to implement logic to determine which page to navigate to
         }}
       >
