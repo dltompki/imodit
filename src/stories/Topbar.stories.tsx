@@ -13,18 +13,18 @@ type Story = StoryObj<typeof Topbar>;
 
 export const Homepage: Story = {
   args: {
-    theRoute: "/",
+    title: "/",
   },
 };
 
 export const Learn: Story = {
   args: {
-    theRoute: "/learn",
+    title: "/learn",
   },
 };
 
 export const Create: Story = {
   args: {
-    theRoute: "/create",
+    title: "/create",
   },
 };
