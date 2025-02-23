@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 import { Multimedia } from "./Multimedia";
 
-
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
   title: "AddMultimedia",
@@ -33,13 +32,15 @@ export const Primary: Story = {
 
 export const CarJack3D: Story = {
   args: {
-    image: "https://images.contentstack.io/v3/assets/blt62d40591b3650da3/blt075fa6445514f807/658ee44690dcf24aa5646c60/hero_PR1348_HowToUseCarJack_Banner.jpg",
+    image:
+      "https://images.contentstack.io/v3/assets/blt62d40591b3650da3/blt075fa6445514f807/658ee44690dcf24aa5646c60/hero_PR1348_HowToUseCarJack_Banner.jpg",
     threeD: true,
-  }
+  },
 };
 
 export const RegularImage: Story = {
   args: {
-    image: "https://www.stratstone.com/-/media/stratstone/blog/2024/top-10-best-supercars-of-2024/mclaren-750s-driving-dynamic-hero-1920x774px.ashx",
-  }
+    image:
+      "https://www.stratstone.com/-/media/stratstone/blog/2024/top-10-best-supercars-of-2024/mclaren-750s-driving-dynamic-hero-1920x774px.ashx",
+  },
 };
