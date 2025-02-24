@@ -5,7 +5,7 @@ import { Topbar } from "./Topbar";
 export const Home: React.FC = () => {
   return (
     <div>
-      <Topbar title="Getting Started" />
+      <Topbar currentRoute="/home" />
       <Box
         sx={{
           width: "100vw",
