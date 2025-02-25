@@ -1,9 +1,9 @@
-import Box from "@mui/material/Box";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import QrCodeIcon from "@mui/icons-material/QrCode";
 import DrawIcon from "@mui/icons-material/Draw";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
+import { Paper } from "@mui/material";
 
 enum NavBarState {
   None = -1,
@@ -12,12 +12,15 @@ enum NavBarState {
   Scan = 2,
 }
 
-export function BottomNavBar() {
+export default function BottomNavBar() {
   // TODO: Implement logic to determine which page we are on
   const selected = NavBarState.None;
 
   return (
-    <Box sx={{ width: 500 }}>
+    <Paper
+      sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
+      elevation={3}
+    >
       <BottomNavigation
         showLabels
         value={selected}
@@ -30,6 +33,6 @@ export function BottomNavBar() {
         <BottomNavigationAction label="Create" icon={<DrawIcon />} />
         <BottomNavigationAction label="Scan" icon={<QrCodeIcon />} />
       </BottomNavigation>
-    </Box>
+    </Paper>
   );
 }
