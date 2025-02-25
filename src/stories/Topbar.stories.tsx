@@ -5,7 +5,7 @@ export default {
   title: "Topbar",
   component: Topbar,
   argTypes: {
-    theRoute: { control: "text" },
+    currentRoute: { control: "text" },
   },
 };
 
@@ -13,18 +13,18 @@ type Story = StoryObj<typeof Topbar>;
 
 export const Homepage: Story = {
   args: {
-    theRoute: "/",
+    currentRoute: "/",
   },
 };
 
 export const Learn: Story = {
   args: {
-    theRoute: "/learn",
+    currentRoute: "/learn",
   },
 };
 
 export const Create: Story = {
   args: {
-    theRoute: "/create",
+    currentRoute: "/create",
   },
 };

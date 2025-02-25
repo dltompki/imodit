@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { BottomNavBar } from "./BottomNavBar";
+import BottomNavBar from "./BottomNavBar";
 
 const meta = {
   title: "Global/MobileNavBar",
