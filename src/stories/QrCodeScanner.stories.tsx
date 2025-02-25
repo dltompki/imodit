@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { QrCodeScanner } from "./QrCodeScanner";
 
 const meta = {
-  title: "CameraView",
+  title: "QrCodeScanner",
   component: QrCodeScanner,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
