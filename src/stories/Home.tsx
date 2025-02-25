@@ -1,6 +1,7 @@
 import { Box, Button, Stack } from "@mui/material";
 import { MenuBook, QrCodeScanner, Create } from "@mui/icons-material";
 import { Topbar } from "./Topbar";
+import { Link } from "react-router-dom";
 
 export const Home: React.FC = () => {
   return (
@@ -19,13 +20,27 @@ export const Home: React.FC = () => {
         }}
       >
         <Stack direction="column" spacing={2}>
-          <Button variant="contained" size="large" startIcon={<Create />}>
-            Create
-          </Button>
-          <Button variant="contained" size="large" startIcon={<MenuBook />}>
+          <Button
+            component={Link}
+            to="/learn"
+            variant="contained"
+            size="large"
+            startIcon={<MenuBook />}
+          >
             Learn
           </Button>
           <Button
+            component={Link}
+            to="/create"
+            variant="contained"
+            size="large"
+            startIcon={<Create />}
+          >
+            Create
+          </Button>
+          <Button
+            component={Link}
+            to="/scan"
             variant="contained"
             size="large"
             startIcon={<QrCodeScanner />}
