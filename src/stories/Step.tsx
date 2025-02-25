@@ -7,7 +7,7 @@ interface StepType{
 }
 
 export const Step: React.FC<StepType> = (props: StepType) => {
-    return (<Box>
+    return (<Box sx={{paddingTop: 3, paddingBottom: 3}}>
         <Box sx={{display: "flex", flexDirection: "column"}}>
             <img src="#"/>
             <Typography variant="h6" sx={{alignSelf: "center", fontWeight: "bold"}}>
