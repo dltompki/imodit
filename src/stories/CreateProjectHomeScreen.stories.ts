@@ -13,7 +13,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    projects: []
+    projects: [],
   },
 };
 
@@ -23,10 +23,11 @@ export const OneProject: Story = {
       {
         title: "Install a new Engine!",
         description: "Being Reviewed",
-        image: "https://hips.hearstapps.com/hmg-prod/images/gettyimages-73743260-1553736466.jpg?crop=1.00xw:0.916xh;0,0.0534xh&resize=980:*",
-      }
-    ]
-  }
+        image:
+          "https://hips.hearstapps.com/hmg-prod/images/gettyimages-73743260-1553736466.jpg?crop=1.00xw:0.916xh;0,0.0534xh&resize=980:*",
+      },
+    ],
+  },
 };
 
 export const TwoProjects: Story = {
@@ -35,13 +36,15 @@ export const TwoProjects: Story = {
       {
         title: "Install a new Engine!",
         description: "Being Reviewed",
-        image: "https://hips.hearstapps.com/hmg-prod/images/gettyimages-73743260-1553736466.jpg?crop=1.00xw:0.916xh;0,0.0534xh&resize=980:*",
+        image:
+          "https://hips.hearstapps.com/hmg-prod/images/gettyimages-73743260-1553736466.jpg?crop=1.00xw:0.916xh;0,0.0534xh&resize=980:*",
       },
       {
         title: "Install a new Engine 2!",
         description: "Being Reviewed",
-        image: "https://hips.hearstapps.com/hmg-prod/images/gettyimages-73743260-1553736466.jpg?crop=1.00xw:0.916xh;0,0.0534xh&resize=980:*",
-      }
-    ]
-  }
+        image:
+          "https://hips.hearstapps.com/hmg-prod/images/gettyimages-73743260-1553736466.jpg?crop=1.00xw:0.916xh;0,0.0534xh&resize=980:*",
+      },
+    ],
+  },
 };
