@@ -6,7 +6,7 @@ import BottomNavBar from "./BottomNavBar";
 
 import ProjectCard, { ProjectCardProps } from "./ProjectCard";
 
-interface CreateProjectProps {
+export interface CreateProjectProps {
   projects: ProjectCardProps[];
 }
 
