@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import BottomNavBar from "./BottomNavBar";
+import { withRouter } from "storybook-addon-remix-react-router";
 
 const meta = {
   title: "Global/MobileNavBar",
@@ -14,6 +15,7 @@ const meta = {
   argTypes: {
     setState: { type: "function", control: false },
   },
+  decorators: [withRouter],
 } satisfies Meta<typeof BottomNavBar>;
 
 export default meta;
