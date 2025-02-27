@@ -1,7 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { CreateProjectHomeScreen } from "./CreateProjectHomeScreen.tsx";
-import { withRouter, reactRouterParameters } from 'storybook-addon-remix-react-router';
+import {
+  withRouter,
+  reactRouterParameters,
+} from "storybook-addon-remix-react-router";
 
 const meta = {
   title: "Create Project Home Screen",
@@ -16,20 +19,20 @@ const routeParameters = {
   reactRouter: reactRouterParameters({
     location: {
       pathParams: {},
-      searchParams: { },
-      state: { },
+      searchParams: {},
+      state: {},
     },
     routing: {
-      path: '/create',
-      handle: 'Create Project',
+      path: "/create",
+      handle: "Create Project",
     },
-  })
-}
+  }),
+};
 
 export const Default: Story = {
   args: {
     projects: [],
-    ...routeParameters
+    ...routeParameters,
   },
 };
 
@@ -43,7 +46,7 @@ export const OneProject: Story = {
           "https://hips.hearstapps.com/hmg-prod/images/gettyimages-73743260-1553736466.jpg?crop=1.00xw:0.916xh;0,0.0534xh&resize=980:*",
       },
     ],
-    ...routeParameters
+    ...routeParameters,
   },
 };
 
@@ -63,6 +66,6 @@ export const TwoProjects: Story = {
           "https://hips.hearstapps.com/hmg-prod/images/gettyimages-73743260-1553736466.jpg?crop=1.00xw:0.916xh;0,0.0534xh&resize=980:*",
       },
     ],
-    ...routeParameters
+    ...routeParameters,
   },
 };
