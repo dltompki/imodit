@@ -3,7 +3,7 @@ import { Step } from "./Step";
 
 export default {
   title: "Steps",
-  component: Step
+  component: Step,
 };
 
 type Story = StoryObj<typeof Step>;
@@ -27,6 +27,6 @@ export const StepWithNoCaption: Story = {
 
 export const StepWithNoImage: Story = {
   args: {
-    image: ""
-  }
-}
+    image: "",
+  },
+};

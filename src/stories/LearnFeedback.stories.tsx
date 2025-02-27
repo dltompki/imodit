@@ -3,7 +3,7 @@ import { LearnFeedback } from "./LearnFeedback";
 
 export default {
   title: "LearnFeedback",
-  component: LearnFeedback
+  component: LearnFeedback,
 };
 
 type Story = StoryObj<typeof LearnFeedback>;
