@@ -1,5 +1,6 @@
 import { StoryObj } from "@storybook/react";
 import { Topbar } from "./Topbar";
+import { withRouter } from "storybook-addon-remix-react-router";
 
 export default {
   title: "Topbar",
@@ -7,6 +8,7 @@ export default {
   argTypes: {
     currentRoute: { control: "text" },
   },
+  decorators: [withRouter],
 };
 
 type Story = StoryObj<typeof Topbar>;
