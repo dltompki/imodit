@@ -1,6 +1,5 @@
 import { StoryObj } from "@storybook/react";
 import { Step } from "./Step";
-import { withRouter } from "storybook-addon-remix-react-router";
 
 export default {
   title: "Steps",
