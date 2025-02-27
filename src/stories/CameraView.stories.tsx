@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import BottomNavBar from "./BottomNavBar";
+import { CameraView } from "./CameraView";
 
 const meta = {
-  title: "Global/MobileNavBar",
-  component: BottomNavBar,
+  title: "CameraView",
+  component: CameraView,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
   parameters: {
@@ -14,7 +14,7 @@ const meta = {
   argTypes: {
     setState: { type: "function", control: false },
   },
-} satisfies Meta<typeof BottomNavBar>;
+} satisfies Meta<typeof CameraView>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

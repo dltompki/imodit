@@ -1,35 +1,62 @@
-import Box from "@mui/material/Box";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import QrCodeIcon from "@mui/icons-material/QrCode";
 import DrawIcon from "@mui/icons-material/Draw";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
+import { Paper } from "@mui/material";
+import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
 
 enum NavBarState {
-  None = -1,
-  Learn = 0,
-  Create = 1,
-  Scan = 2,
+  None = "/",
+  Learn = "/learn",
+  Create = "/create",
+  Scan = "/scan",
 }
 
-export function BottomNavBar() {
-  // TODO: Implement logic to determine which page we are on
-  const selected = NavBarState.None;
+export default function BottomNavBar() {
+  const location = useLocation();
+
+  const [value, setValue] = useState<NavBarState>(
+    Object.values(NavBarState).includes(location.pathname as NavBarState)
+      ? (location.pathname as NavBarState)
+      : NavBarState.None,
+  );
 
   return (
-    <Box sx={{ width: 500 }}>
+    <Paper
+      sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
+      elevation={3}
+    >
       <BottomNavigation
         showLabels
-        value={selected}
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        onChange={(_event, _newValue: NavBarState) => {
-          // Need to implement logic to determine which page to navigate to
+        value={value}
+        onChange={(_event, newValue: NavBarState) => {
+          setValue(newValue);
         }}
       >
-        <BottomNavigationAction label="Learn" icon={<MenuBookIcon />} />
-        <BottomNavigationAction label="Create" icon={<DrawIcon />} />
-        <BottomNavigationAction label="Scan" icon={<QrCodeIcon />} />
+        <BottomNavigationAction
+          component={Link}
+          to="/learn"
+          value="/learn"
+          label="Learn"
+          icon={<MenuBookIcon />}
+        />
+        <BottomNavigationAction
+          component={Link}
+          to="/create"
+          value="/create"
+          label="Create"
+          icon={<DrawIcon />}
+        />
+        <BottomNavigationAction
+          component={Link}
+          to="/scan"
+          value="/scan"
+          label="Scan"
+          icon={<QrCodeIcon />}
+        />
       </BottomNavigation>
-    </Box>
+    </Paper>
   );
 }
