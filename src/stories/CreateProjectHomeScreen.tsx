@@ -13,7 +13,6 @@ export interface CreateProjectProps {
 }
 
 export function CreateProjectHomeScreen(props: CreateProjectProps) {
-
   const navigation = useNavigate();
 
   const fabStyle = {
@@ -61,7 +60,14 @@ export function CreateProjectHomeScreen(props: CreateProjectProps) {
           ))}
         </Stack>
 
-        <Fab color="primary" aria-label="add" sx={fabStyle} onClick={() => {navigation("/create/name")}}>
+        <Fab
+          color="primary"
+          aria-label="add"
+          sx={fabStyle}
+          onClick={() => {
+            navigation("/create/name");
+          }}
+        >
           <AddIcon />
         </Fab>
       </Box>

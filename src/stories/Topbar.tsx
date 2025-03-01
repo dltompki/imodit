@@ -3,8 +3,6 @@ import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material";
 
 import { Link, useNavigate } from "react-router-dom";
 interface TopbarProps {
-
-
   rightButtonText?: string;
   rightButtonAction?: () => void;
 
@@ -12,29 +10,32 @@ interface TopbarProps {
   leftButtonAction?: () => void;
 
   title: string;
-
 }
 
 export const Topbar: React.FC<TopbarProps> = (props: TopbarProps) => {
-  const navigate = useNavigate();   
+  const navigate = useNavigate();
 
-  let leftButton = <Typography>{props.leftButtonText}</Typography>
+  let leftButton = <Typography>{props.leftButtonText}</Typography>;
 
   if (props.leftButtonText === "HomeIcon") {
-    leftButton = <Home />
+    leftButton = <Home />;
   } else if (props.leftButtonText === "BackIcon") {
-    leftButton = <ArrowBackIos />
+    leftButton = <ArrowBackIos />;
   }
 
-  let leftButtonAction = () => {}
+  let leftButtonAction = () => {};
 
   if (props.leftButtonAction) {
-    leftButtonAction = props.leftButtonAction
+    leftButtonAction = props.leftButtonAction;
   } else {
     if (props.leftButtonText === "HomeIcon") {
-      leftButtonAction = () => {navigate("/")}
+      leftButtonAction = () => {
+        navigate("/");
+      };
     } else if (props.leftButtonText === "BackIcon") {
-      leftButtonAction = () => {navigate(-1)}
+      leftButtonAction = () => {
+        navigate(-1);
+      };
     }
   }
 
@@ -42,14 +43,16 @@ export const Topbar: React.FC<TopbarProps> = (props: TopbarProps) => {
     <AppBar>
       <Toolbar sx={{ flex: 1, justifyContent: "space-between" }}>
         <Typography>
-          <IconButton onClick={leftButtonAction} >
-            {leftButton}
-          </IconButton>
+          <IconButton onClick={leftButtonAction}>{leftButton}</IconButton>
         </Typography>
         <Typography>{props.title}</Typography>
-        <Button variant="text" sx={{ color: "white" }} onClick={props.rightButtonAction ? props.rightButtonAction : () => {}}>
+        <Button
+          variant="text"
+          sx={{ color: "white" }}
+          onClick={props.rightButtonAction ? props.rightButtonAction : () => {}}
+        >
           {props.rightButtonText}
-        </Button> 
+        </Button>
       </Toolbar>
     </AppBar>
   );

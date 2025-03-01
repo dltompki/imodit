@@ -34,4 +34,4 @@ export const Default: Story = {
     createProject: (_name: string) => 0,
     ...routeParameters,
   },
-}
+};
