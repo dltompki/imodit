@@ -65,7 +65,7 @@ export function CreateProjectHomeScreen(props: CreateProjectProps) {
           aria-label="add"
           sx={fabStyle}
           onClick={() => {
-            navigation("/create/name");
+            void navigation("/create/name");
           }}
         >
           <AddIcon />

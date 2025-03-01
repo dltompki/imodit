@@ -1,11 +1,12 @@
 import { ArrowBackIos, Home } from "@mui/icons-material";
 import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material";
 
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 interface TopbarProps {
   rightButtonText?: string;
   rightButtonAction?: () => void;
 
+  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
   leftButtonText?: string | "HomeIcon" | "BackIcon";
   leftButtonAction?: () => void;
 
@@ -30,11 +31,11 @@ export const Topbar: React.FC<TopbarProps> = (props: TopbarProps) => {
   } else {
     if (props.leftButtonText === "HomeIcon") {
       leftButtonAction = () => {
-        navigate("/");
+        void navigate("/");
       };
     } else if (props.leftButtonText === "BackIcon") {
       leftButtonAction = () => {
-        navigate(-1);
+        void navigate(-1);
       };
     }
   }

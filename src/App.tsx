@@ -4,17 +4,11 @@ import { Home } from "./stories/Home";
 import { CreateProjectHomeScreen } from "./stories/CreateProjectHomeScreen";
 import { ProjectCardProps } from "./stories/ProjectCard";
 import { NameProjectPage } from "./stories/NameProjectPage";
-import { useMemo } from "react";
-import { createTheme, ThemeProvider } from "@mui/material";
 
 function App() {
   // eslint-disable-next-line prefer-const
   let projects: ProjectCardProps[] = [];
   let lastId = 0;
-
-  const theme = createTheme({
-    defaultColorScheme: "light",
-  });
 
   return (
     <BrowserRouter>
