@@ -5,6 +5,7 @@ import { CreateProjectHomeScreen } from "./stories/CreateProjectHomeScreen";
 import { ProjectCardProps } from "./stories/ProjectCard";
 
 function App() {
+  // eslint-disable-next-line prefer-const
   let projects: ProjectCardProps[] = [];
 
   return (
