@@ -36,7 +36,7 @@ export function CreateProjectHomeScreen(props: CreateProjectProps) {
           <Typography
             variant="subtitle1"
             component="div"
-            sx={{ color: "text.secondary", top: 100, position: "absolute" }}
+            sx={{ top: 100, position: "absolute" }}
           >
             No projects yet. Click the button below to create one.
           </Typography>
