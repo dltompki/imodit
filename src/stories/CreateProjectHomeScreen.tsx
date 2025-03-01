@@ -4,6 +4,8 @@ import AddIcon from "@mui/icons-material/Add";
 import { Topbar } from "./Topbar";
 import BottomNavBar from "./BottomNavBar";
 
+import { useNavigate } from "react-router-dom";
+
 import ProjectCard, { ProjectCardProps } from "./ProjectCard";
 
 export interface CreateProjectProps {
@@ -11,6 +13,9 @@ export interface CreateProjectProps {
 }
 
 export function CreateProjectHomeScreen(props: CreateProjectProps) {
+
+  const navigation = useNavigate();
+
   const fabStyle = {
     position: "absolute",
     bottom: 72,
@@ -19,7 +24,7 @@ export function CreateProjectHomeScreen(props: CreateProjectProps) {
 
   return (
     <>
-      <Topbar currentRoute="/home" />
+      <Topbar title="Your Projects" leftButtonText="HomeIcon" />
       <Box
         sx={{
           width: "100vw",
@@ -56,7 +61,7 @@ export function CreateProjectHomeScreen(props: CreateProjectProps) {
           ))}
         </Stack>
 
-        <Fab color="primary" aria-label="add" sx={fabStyle}>
+        <Fab color="primary" aria-label="add" sx={fabStyle} onClick={() => {navigation("/create/name")}}>
           <AddIcon />
         </Fab>
       </Box>

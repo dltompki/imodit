@@ -1,29 +1,55 @@
 import { ArrowBackIos, Home } from "@mui/icons-material";
 import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material";
 
+import { Link, useNavigate } from "react-router-dom";
 interface TopbarProps {
-  currentRoute: string;
-  backRoute?: string;
+
+
+  rightButtonText?: string;
+  rightButtonAction?: () => void;
+
+  leftButtonText?: string | "HomeIcon" | "BackIcon";
+  leftButtonAction?: () => void;
+
+  title: string;
+
 }
 
 export const Topbar: React.FC<TopbarProps> = (props: TopbarProps) => {
-  const pages = props.currentRoute.split("/");
-  const title =
-    pages[pages.length - 1] == ""
-      ? ""
-      : `${pages[pages.length - 1].charAt(0).toUpperCase() + pages[pages.length - 1].substring(1)}`;
+  const navigate = useNavigate();   
+
+  let leftButton = <Typography>{props.leftButtonText}</Typography>
+
+  if (props.leftButtonText === "HomeIcon") {
+    leftButton = <Home />
+  } else if (props.leftButtonText === "BackIcon") {
+    leftButton = <ArrowBackIos />
+  }
+
+  let leftButtonAction = () => {}
+
+  if (props.leftButtonAction) {
+    leftButtonAction = props.leftButtonAction
+  } else {
+    if (props.leftButtonText === "HomeIcon") {
+      leftButtonAction = () => {navigate("/")}
+    } else if (props.leftButtonText === "BackIcon") {
+      leftButtonAction = () => {navigate(-1)}
+    }
+  }
+
   return (
     <AppBar>
       <Toolbar sx={{ flex: 1, justifyContent: "space-between" }}>
         <Typography>
-          <IconButton>
-            {props.backRoute ? <ArrowBackIos /> : <Home />}
+          <IconButton onClick={leftButtonAction} >
+            {leftButton}
           </IconButton>
         </Typography>
-        <Typography>{title}</Typography>
-        <Button variant="text" sx={{ color: "white" }}>
-          Cancel
-        </Button>
+        <Typography>{props.title}</Typography>
+        <Button variant="text" sx={{ color: "white" }} onClick={props.rightButtonAction ? props.rightButtonAction : () => {}}>
+          {props.rightButtonText}
+        </Button> 
       </Toolbar>
     </AppBar>
   );
