@@ -18,7 +18,6 @@ function App() {
       })
 
   return (
-    <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -35,7 +34,6 @@ function App() {
         </Routes>
         <BottomNavBar />
       </BrowserRouter>
-    </ThemeProvider>
   );
 }
 

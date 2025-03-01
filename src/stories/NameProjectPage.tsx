@@ -31,24 +31,17 @@ export function NameProjectPage(props: CreateProjectProps) {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          backgroundColor: "white",
         }}
       >
 
         <Stack spacing={2} sx={{ width: "100%" }}>
-          <Typography variant="h4" align="center">
+          <Typography variant="h4" align="center" color="black" sx={{top: 0}}>
             Name your project
           </Typography>
-          <Box sx={}>
-            <TextField id="outlined-basic" label="Project Name" variant="outlined" type="mode"/>
-
+          <Box sx={{ alignContent: "center", display: "flex", justifyContent: "center" }}>
+            <TextField id="outlined-basic" label="Project Name" variant="outlined"/>
           </Box>
-          <Fab
-            color="primary"
-            aria-label="add"
-            onClick={() => props.createProject("New Project")}
-          >
-            <AddIcon />
-          </Fab>
         </Stack>
         
       </Box>
