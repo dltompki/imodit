@@ -3,10 +3,12 @@ import BottomNavBar from "./stories/BottomNavBar";
 import { Home } from "./stories/Home";
 import { CreateProjectHomeScreen } from "./stories/CreateProjectHomeScreen";
 import { ProjectCardProps } from "./stories/ProjectCard";
+import { NameProjectPage } from "./stories/NameProjectPage";
 
 function App() {
   // eslint-disable-next-line prefer-const
   let projects: ProjectCardProps[] = [];
+  let lastId = 0;
 
   return (
     <BrowserRouter>
@@ -17,6 +19,23 @@ function App() {
         <Route
           path="/create"
           element={<CreateProjectHomeScreen projects={projects} />}
+        />
+        <Route
+          path="/create/name"
+          element={
+            <NameProjectPage
+              createProject={(name: string) => {
+                projects.push({
+                  title: name,
+                  description: "",
+                  image: "",
+                  id: lastId,
+                });
+                lastId += 1;
+                return lastId;
+              }}
+            />
+          }
         />
       </Routes>
       <BottomNavBar />

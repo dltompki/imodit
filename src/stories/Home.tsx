@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export const Home: React.FC = () => {
   return (
     <div>
-      <Topbar currentRoute="/home" />
+      <Topbar title="Home" leftButtonText="" />
       <Box
         sx={{
           width: "100vw",
