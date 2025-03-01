@@ -5,8 +5,7 @@ import { CreateProjectHomeScreen } from "./stories/CreateProjectHomeScreen";
 import { ProjectCardProps } from "./stories/ProjectCard";
 
 function App() {
-
-  let projects: ProjectCardProps[]   = []
+  let projects: ProjectCardProps[] = [];
 
   return (
     <BrowserRouter>
@@ -14,7 +13,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/learn" element={<p>learn</p>} />
         <Route path="/scan" element={<p>scan</p>} />
-        <Route path="/create" element={<CreateProjectHomeScreen projects={projects} />} />
+        <Route
+          path="/create"
+          element={<CreateProjectHomeScreen projects={projects} />}
+        />
       </Routes>
       <BottomNavBar />
     </BrowserRouter>
