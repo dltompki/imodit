@@ -56,7 +56,7 @@ export function CreateProjectHomeScreen(props: CreateProjectProps) {
           sx={{ top: 80, position: "absolute" }}
         >
           {props.projects.map((project) => (
-            <CardActionArea key={project.title}>
+            <CardActionArea key={project.title} onClick={() => {navigation("/create/" + project.id)}}>
               <ProjectCard {...project} />
             </CardActionArea>
           ))}

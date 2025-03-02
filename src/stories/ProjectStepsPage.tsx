@@ -1,20 +1,23 @@
 import { CardActionArea, Fab } from "@mui/material";
-import { Box, Stack, TextField, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import BottomNavBar from "./BottomNavBar";
 import { Topbar } from "./Topbar";
 import AddIcon from "@mui/icons-material/Add";
 import { Project } from "../App";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ProjectCard from "./ProjectCard";
 
 interface ProjectStepsPageProps {
     projects: Project[];
-    project_id: number;
 }
 
 export function ProjectStepsPage(props: ProjectStepsPageProps) {
+    const { id } = useParams();
 
-    const project = props.projects.find((project) => project.id === props.project_id)!;
+    const project_id = parseInt(id!)!;
+
+    const project = props.projects.find((project) => project.id === project_id)!;
+    
     const navigation = useNavigate();
 
     const fabStyle = {

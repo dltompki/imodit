@@ -3,6 +3,7 @@ import BottomNavBar from "./stories/BottomNavBar";
 import { Home } from "./stories/Home";
 import { CreateProjectHomeScreen } from "./stories/CreateProjectHomeScreen";
 import { NameProjectPage } from "./stories/NameProjectPage";
+import { ProjectStepsPage } from "./stories/ProjectStepsPage";
 
 export interface Step {
   title: string;
@@ -20,8 +21,8 @@ export interface Project {
 }
 
 function App() {
-  // eslint-disable-next-line prefer-const
 
+  // eslint-disable-next-line prefer-const
   let projects: Project[] = [];
   let lastId = 0;
 
@@ -48,8 +49,16 @@ function App() {
                   steps: [],
                 });
                 lastId += 1;
-                return lastId;
+                return lastId - 1;
               }}
+            />
+          }
+        />
+        <Route
+          path="/create/:id"
+          element={
+            <ProjectStepsPage
+              projects={projects}
             />
           }
         />

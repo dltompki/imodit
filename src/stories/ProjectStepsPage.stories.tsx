@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { ProjectStepsPage } from "./ProjectStepsPage.tsx";
-import { reactRouterParameters, withRouter } from "storybook-addon-remix-react-router";
+import { withRouter } from "storybook-addon-remix-react-router";
 
 const meta = {
   component: ProjectStepsPage,
