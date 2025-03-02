@@ -56,16 +56,24 @@ export function CreateProjectHomeScreen(props: CreateProjectProps) {
         >
           {props.projects.map((project) => {
             if (project.being_reviewed) {
-              return <ProjectCard {...project} description="Being Reviewed..." />;
+              return (
+                <ProjectCard
+                  key={project.id}
+                  {...project}
+                  description="Being Reviewed..."
+                />
+              );
             }
-            return <CardActionArea
-              key={project.title}
-              onClick={() => {
-                void navigation("/create/" + project.id);
-              }}
-            >
-              <ProjectCard {...project} />
-            </CardActionArea>
+            return (
+              <CardActionArea
+                key={project.id}
+                onClick={() => {
+                  void navigation("/create/" + project.id);
+                }}
+              >
+                <ProjectCard {...project} />
+              </CardActionArea>
+            );
           })}
         </Stack>
 

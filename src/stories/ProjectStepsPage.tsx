@@ -73,10 +73,13 @@ export function ProjectStepsPage(props: ProjectStepsPageProps) {
             const newStep = { ...step };
             newStep.title = step.id + 1 + ". " + step.title;
             return (
-              <CardActionArea key={step.title} onClick={() => {
-                void navigation("/create/" + project_id + "/" + step.id);
-              }}>
-                <ProjectCard {...newStep} image={step.images[0]}/>
+              <CardActionArea
+                key={step.title}
+                onClick={() => {
+                  void navigation("/create/" + project_id + "/" + step.id);
+                }}
+              >
+                <ProjectCard {...newStep} image={step.images[0]} />
               </CardActionArea>
             );
           })}
@@ -109,10 +112,9 @@ export function ProjectStepsPage(props: ProjectStepsPageProps) {
                 return newProject;
               }
               return p;
-            })
+            });
 
-            props.setProjects(newProjects)
-
+            props.setProjects(newProjects);
 
             void navigation("/create/" + project_id + "/" + newStep.id);
           }}

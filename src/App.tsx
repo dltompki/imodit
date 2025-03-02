@@ -27,10 +27,7 @@ export interface Project {
 }
 
 function App() {
-  // eslint-disable-next-line prefer-const
-
   const [projects, setProjects] = React.useState<Project[]>([]);
-  let lastId = 0;
 
   return (
     <BrowserRouter>
@@ -45,23 +42,26 @@ function App() {
         <Route
           path="/create/name"
           element={
-            <NameProjectPage
-              projects={projects}
-              setProjects={setProjects}
-            />
+            <NameProjectPage projects={projects} setProjects={setProjects} />
           }
         />
         <Route
           path="/create/:id"
-          element={<ProjectStepsPage projects={projects} setProjects={setProjects} />}
+          element={
+            <ProjectStepsPage projects={projects} setProjects={setProjects} />
+          }
         />
         <Route
           path="/create/:id/:stepId"
-          element={<StepDetailPage projects={projects} setProjects={setProjects} />}
+          element={
+            <StepDetailPage projects={projects} setProjects={setProjects} />
+          }
         />
         <Route
           path="/create/publish/:id/"
-          element={<PublishProject projects={projects} setProjects={setProjects} />}
+          element={
+            <PublishProject projects={projects} setProjects={setProjects} />
+          }
         />
       </Routes>
       <BottomNavBar />

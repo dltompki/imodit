@@ -1,12 +1,20 @@
 import { useState } from "react";
-import { Typography, List, ListItem, IconButton, TextField, Button, Box } from "@mui/material";
+import {
+  Typography,
+  List,
+  ListItem,
+  IconButton,
+  TextField,
+  Button,
+  Box,
+} from "@mui/material";
 import { Delete, Add } from "@mui/icons-material";
 
 interface ModifyableListProps {
-  sectionHeading: string
-  equpmentList: string[]
-  setEquipmentList: ((equipment: string[]) => void)
-  placeholder: string
+  sectionHeading: string;
+  equpmentList: string[];
+  setEquipmentList: (equipment: string[]) => void;
+  placeholder: string;
 }
 
 export function ModifyableList(props: ModifyableListProps) {
@@ -29,7 +37,7 @@ export function ModifyableList(props: ModifyableListProps) {
         {props.sectionHeading}
       </Typography>
 
-      <List sx={{m: 3}}>
+      <List sx={{ m: 3 }}>
         {props.equpmentList.map((item, index) => (
           <ListItem
             key={index}
@@ -44,7 +52,7 @@ export function ModifyableList(props: ModifyableListProps) {
         ))}
       </List>
 
-      <Box sx={{ m: 1, display: 'flex', alignItems: 'center' }}>
+      <Box sx={{ m: 1, display: "flex", alignItems: "center" }}>
         <TextField
           label={props.placeholder}
           value={newItem}
@@ -52,10 +60,14 @@ export function ModifyableList(props: ModifyableListProps) {
           onChange={(e) => setNewItem(e.target.value)}
           sx={{ m: 3, width: "200px" }}
         />
-        <Button variant="contained" startIcon={<Add />} sx={{height: 30, }} onClick={handleAdd}>
+        <Button
+          variant="contained"
+          startIcon={<Add />}
+          sx={{ height: 30 }}
+          onClick={handleAdd}
+        >
           Add
         </Button>
-
       </Box>
     </>
   );

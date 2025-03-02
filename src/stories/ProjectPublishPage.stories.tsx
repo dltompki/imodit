@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ProjectStepsPage } from "./ProjectStepsPage.tsx";
-import { reactRouterParameters, withRouter } from "storybook-addon-remix-react-router";
+import {
+  reactRouterParameters,
+  withRouter,
+} from "storybook-addon-remix-react-router";
 import { StepDetailPage } from "./StepDetailPage.tsx";
 
 const meta = {
@@ -12,9 +14,9 @@ const meta = {
     layout: "fullscreen",
     reactRouter: reactRouterParameters({
       location: {
-        pathParams: { id: '0', stepId: '0'},
+        pathParams: { id: "0", stepId: "0" },
       },
-      routing: { path: '/create/:id/:stepId' },
+      routing: { path: "/create/:id/:stepId" },
     }),
   },
   decorators: [withRouter],
@@ -38,19 +40,23 @@ export const Default: Story = {
             title: "Uninstall Old Engine",
             description: "",
             id: 0,
-            images: ["https://hips.hearstapps.com/hmg-prod/images/gettyimages-73743260-1553736466.jpg?crop=1.00xw:0.916xh;0,0.0534xh&resize=980:*"],
+            images: [
+              "https://hips.hearstapps.com/hmg-prod/images/gettyimages-73743260-1553736466.jpg?crop=1.00xw:0.916xh;0,0.0534xh&resize=980:*",
+            ],
             threeDImages: [],
             safetyEquipment: [],
-            tools: []
+            tools: [],
           },
           {
             title: "Reinstall New Engine",
             description: "",
             id: 1,
-            images: ["https://hips.hearstapps.com/hmg-prod/images/gettyimages-73743260-1553736466.jpg?crop=1.00xw:0.916xh;0,0.0534xh&resize=980:*"],
+            images: [
+              "https://hips.hearstapps.com/hmg-prod/images/gettyimages-73743260-1553736466.jpg?crop=1.00xw:0.916xh;0,0.0534xh&resize=980:*",
+            ],
             threeDImages: [],
             safetyEquipment: [],
-            tools: []
+            tools: [],
           },
         ],
       },

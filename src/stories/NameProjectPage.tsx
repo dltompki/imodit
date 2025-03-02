@@ -17,31 +17,25 @@ export function NameProjectPage(props: CreateProjectProps) {
       <Topbar
         title="Name your Project"
         leftButtonText="BackIcon"
-        leftButtonAction={
-          () => {
-            void navigation("/create");
-          }
-        }
+        leftButtonAction={() => {
+          void navigation("/create");
+        }}
         rightButtonText="Create"
         rightButtonAction={() => {
           console.log("Create project");
 
-          // We know this is a text field
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment
-          const name = (document.getElementById("project-name") as any).value;
+          const name = (
+            document.getElementById("project-name") as HTMLInputElement
+          ).value;
           if (name) {
-            console.log();
-
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-            
             const id = props.projects.length + 1;
             const newProject = {
               id: id,
               title: name,
               steps: [],
               image: "",
-              description: ""
-            }
+              description: "",
+            };
 
             props.setProjects([...props.projects, newProject]);
 
