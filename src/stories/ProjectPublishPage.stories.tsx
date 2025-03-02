@@ -2,22 +2,23 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { ProjectStepsPage } from "./ProjectStepsPage.tsx";
 import { reactRouterParameters, withRouter } from "storybook-addon-remix-react-router";
+import { StepDetailPage } from "./StepDetailPage.tsx";
 
 const meta = {
-  component: ProjectStepsPage,
+  component: StepDetailPage,
   tags: ["autodocs"],
   parameters: {
     // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
     layout: "fullscreen",
-      reactRouter: reactRouterParameters({
-        location: {
-          pathParams: { id: '42' },
-        },
-        routing: { path: '/create/:id' },
-      }),
+    reactRouter: reactRouterParameters({
+      location: {
+        pathParams: { id: '0', stepId: '0'},
+      },
+      routing: { path: '/create/:id/:stepId' },
+    }),
   },
   decorators: [withRouter],
-} satisfies Meta<typeof ProjectStepsPage>;
+} satisfies Meta<typeof StepDetailPage>;
 
 export default meta;
 

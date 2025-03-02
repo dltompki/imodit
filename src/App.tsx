@@ -4,13 +4,17 @@ import { Home } from "./stories/Home";
 import { CreateProjectHomeScreen } from "./stories/CreateProjectHomeScreen";
 import { NameProjectPage } from "./stories/NameProjectPage";
 import { ProjectStepsPage } from "./stories/ProjectStepsPage";
+import React from "react";
+import { StepDetailPage } from "./stories/StepDetailPage";
 
 export interface Step {
   title: string;
   description: string;
   id: number;
-  image: string;
-  otherImages: string[];
+  images: string[];
+  threeDImages: string[];
+  safetyEquipment: string[];
+  tools: string[];
 }
 export interface Project {
   image: string;
@@ -22,7 +26,8 @@ export interface Project {
 
 function App() {
   // eslint-disable-next-line prefer-const
-  let projects: Project[] = [];
+
+  const [projects, setProjects] = React.useState<Project[]>([]);
   let lastId = 0;
 
   return (
@@ -55,7 +60,11 @@ function App() {
         />
         <Route
           path="/create/:id"
-          element={<ProjectStepsPage projects={projects} />}
+          element={<ProjectStepsPage projects={projects} setProjects={setProjects} />}
+        />
+        <Route
+          path="/create/:id/:stepId"
+          element={<StepDetailPage projects={projects} setProjects={setProjects} />}
         />
       </Routes>
       <BottomNavBar />
