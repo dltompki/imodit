@@ -2,12 +2,27 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import BottomNavBar from "./stories/BottomNavBar";
 import { Home } from "./stories/Home";
 import { CreateProjectHomeScreen } from "./stories/CreateProjectHomeScreen";
-import { ProjectCardProps } from "./stories/ProjectCard";
 import { NameProjectPage } from "./stories/NameProjectPage";
+
+export interface Step {
+  title: string;
+  description: string;
+  id: number;
+  image: string;
+  otherImages: string[];
+}
+export interface Project {
+  image: string;
+  title: string;
+  description: string;
+  id: number;
+  steps: Step[];
+}
 
 function App() {
   // eslint-disable-next-line prefer-const
-  let projects: ProjectCardProps[] = [];
+
+  let projects: Project[] = [];
   let lastId = 0;
 
   return (
@@ -30,6 +45,7 @@ function App() {
                   description: "",
                   image: "",
                   id: lastId,
+                  steps: [],
                 });
                 lastId += 1;
                 return lastId;
