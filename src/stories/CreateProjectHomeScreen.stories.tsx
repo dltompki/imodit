@@ -45,6 +45,7 @@ export const OneProject: Story = {
         image:
           "https://hips.hearstapps.com/hmg-prod/images/gettyimages-73743260-1553736466.jpg?crop=1.00xw:0.916xh;0,0.0534xh&resize=980:*",
         id: 0,
+        steps: [],
       },
     ],
     ...routeParameters,
@@ -60,6 +61,7 @@ export const TwoProjects: Story = {
         image:
           "https://hips.hearstapps.com/hmg-prod/images/gettyimages-73743260-1553736466.jpg?crop=1.00xw:0.916xh;0,0.0534xh&resize=980:*",
         id: 0,
+        steps: [],
       },
       {
         title: "Install a new Engine 2!",
@@ -67,6 +69,7 @@ export const TwoProjects: Story = {
         image:
           "https://hips.hearstapps.com/hmg-prod/images/gettyimages-73743260-1553736466.jpg?crop=1.00xw:0.916xh;0,0.0534xh&resize=980:*",
         id: 1,
+        steps: [],
       },
     ],
     ...routeParameters,

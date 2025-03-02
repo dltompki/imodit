@@ -1,19 +1,23 @@
-import { Box, CardActionArea, Fab, Stack, Typography } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
-
-import { Topbar } from "./Topbar";
+import { CardActionArea, Fab } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import BottomNavBar from "./BottomNavBar";
-
-import { useNavigate } from "react-router-dom";
-
-import ProjectCard from "./ProjectCard";
+import { Topbar } from "./Topbar";
+import AddIcon from "@mui/icons-material/Add";
 import { Project } from "../App";
+import { useNavigate, useParams } from "react-router-dom";
+import ProjectCard from "./ProjectCard";
 
-interface CreateProjectProps {
+interface ProjectStepsPageProps {
   projects: Project[];
 }
 
-export function CreateProjectHomeScreen(props: CreateProjectProps) {
+export function ProjectStepsPage(props: ProjectStepsPageProps) {
+  const { id } = useParams();
+
+  const project_id = parseInt(id!);
+
+  const project = props.projects.find((project) => project.id === project_id)!;
+
   const navigation = useNavigate();
 
   const fabStyle = {
@@ -24,7 +28,13 @@ export function CreateProjectHomeScreen(props: CreateProjectProps) {
 
   return (
     <>
-      <Topbar title="Your Projects" leftButtonText="HomeIcon" />
+      <Topbar
+        title={project.title}
+        leftButtonText="BackIcon"
+        leftButtonAction={() => {
+          void navigation(-1);
+        }}
+      />
       <Box
         sx={{
           width: "100vw",
@@ -43,7 +53,7 @@ export function CreateProjectHomeScreen(props: CreateProjectProps) {
             component="div"
             sx={{ top: 100, position: "absolute" }}
           >
-            No projects yet. Click the button below to create one.
+            No steps yet. Click the button below to create one.
           </Typography>
         ) : (
           <></>
@@ -54,16 +64,15 @@ export function CreateProjectHomeScreen(props: CreateProjectProps) {
           spacing={2}
           sx={{ top: 80, position: "absolute" }}
         >
-          {props.projects.map((project) => (
-            <CardActionArea
-              key={project.title}
-              onClick={() => {
-                void navigation("/create/" + project.id);
-              }}
-            >
-              <ProjectCard {...project} />
-            </CardActionArea>
-          ))}
+          {project.steps.map((step) => {
+            const newStep = { ...step };
+            newStep.title = step.id + 1 + ". " + step.title;
+            return (
+              <CardActionArea key={step.title}>
+                <ProjectCard {...newStep} />
+              </CardActionArea>
+            );
+          })}
         </Stack>
 
         <Fab

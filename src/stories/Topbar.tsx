@@ -50,7 +50,7 @@ export const Topbar: React.FC<TopbarProps> = (props: TopbarProps) => {
         <Button
           variant="text"
           sx={{ color: "white" }}
-          onClick={props.rightButtonAction ? props.rightButtonAction : () => {}}
+          onClick={props.rightButtonAction}
         >
           {props.rightButtonText}
         </Button>
