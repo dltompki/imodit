@@ -1,12 +1,15 @@
 import { Box, Stack, TextField, Typography } from "@mui/material";
 import { Topbar } from "./Topbar";
 import BottomNavBar from "./BottomNavBar";
+import { useNavigate } from "react-router-dom";
 
 export interface CreateProjectProps {
   createProject: (name: string) => number;
 }
 
 export function NameProjectPage(props: CreateProjectProps) {
+  const navigation = useNavigate();
+
   return (
     <>
       <Topbar
@@ -14,10 +17,17 @@ export function NameProjectPage(props: CreateProjectProps) {
         leftButtonText="BackIcon"
         rightButtonText="Create"
         rightButtonAction={() => {
-          const name = document.getElementById("project-name")?.nodeValue;
+          console.log("Create project");
+
+          // We know this is a text field
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment
+          const name = (document.getElementById("project-name") as any).value;
           if (name) {
-            props.createProject(name);
-            //TODO: Navigate to the project page
+            console.log();
+
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+            const id = props.createProject(name);
+            void navigation("/create/" + id);
           }
         }}
       />
