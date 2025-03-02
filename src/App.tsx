@@ -21,7 +21,6 @@ export interface Project {
 }
 
 function App() {
-
   // eslint-disable-next-line prefer-const
   let projects: Project[] = [];
   let lastId = 0;
@@ -56,11 +55,7 @@ function App() {
         />
         <Route
           path="/create/:id"
-          element={
-            <ProjectStepsPage
-              projects={projects}
-            />
-          }
+          element={<ProjectStepsPage projects={projects} />}
         />
       </Routes>
       <BottomNavBar />

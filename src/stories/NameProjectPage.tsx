@@ -8,7 +8,6 @@ export interface CreateProjectProps {
 }
 
 export function NameProjectPage(props: CreateProjectProps) {
-
   const navigation = useNavigate();
 
   return (
@@ -19,11 +18,16 @@ export function NameProjectPage(props: CreateProjectProps) {
         rightButtonText="Create"
         rightButtonAction={() => {
           console.log("Create project");
+
+          // We know this is a text field
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment
           const name = (document.getElementById("project-name") as any).value;
           if (name) {
-            console.log()
+            console.log();
+
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
             const id = props.createProject(name);
-            navigation("/create/" + id)
+            void navigation("/create/" + id);
           }
         }}
       />

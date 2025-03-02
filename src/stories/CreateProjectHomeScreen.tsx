@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 import ProjectCard from "./ProjectCard";
 import { Project } from "../App";
 
-
 interface CreateProjectProps {
   projects: Project[];
 }
@@ -56,7 +55,12 @@ export function CreateProjectHomeScreen(props: CreateProjectProps) {
           sx={{ top: 80, position: "absolute" }}
         >
           {props.projects.map((project) => (
-            <CardActionArea key={project.title} onClick={() => {navigation("/create/" + project.id)}}>
+            <CardActionArea
+              key={project.title}
+              onClick={() => {
+                void navigation("/create/" + project.id);
+              }}
+            >
               <ProjectCard {...project} />
             </CardActionArea>
           ))}

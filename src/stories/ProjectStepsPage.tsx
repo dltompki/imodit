@@ -8,26 +8,33 @@ import { useNavigate, useParams } from "react-router-dom";
 import ProjectCard from "./ProjectCard";
 
 interface ProjectStepsPageProps {
-    projects: Project[];
+  projects: Project[];
 }
 
 export function ProjectStepsPage(props: ProjectStepsPageProps) {
-    const { id } = useParams();
+  const { id } = useParams();
 
-    const project_id = parseInt(id!)!;
+  const project_id = parseInt(id!);
 
-    const project = props.projects.find((project) => project.id === project_id)!;
-    
-    const navigation = useNavigate();
+  const project = props.projects.find((project) => project.id === project_id)!;
 
-    const fabStyle = {
-        position: "absolute",
-        bottom: 72,
-        right: 16,
-    };
+  const navigation = useNavigate();
 
-    return <>
-    <Topbar title={project.title} leftButtonText="BackIcon" leftButtonAction={() => {navigation(-1)} } />
+  const fabStyle = {
+    position: "absolute",
+    bottom: 72,
+    right: 16,
+  };
+
+  return (
+    <>
+      <Topbar
+        title={project.title}
+        leftButtonText="BackIcon"
+        leftButtonAction={() => {
+          void navigation(-1);
+        }}
+      />
       <Box
         sx={{
           width: "100vw",
@@ -58,13 +65,14 @@ export function ProjectStepsPage(props: ProjectStepsPageProps) {
           sx={{ top: 80, position: "absolute" }}
         >
           {project.steps.map((step) => {
-            let newStep = {...step};
-            newStep.title = (step.id + 1) + ". " + step.title;
-            return (<CardActionArea key={step.title}>
-                
-              <ProjectCard {...newStep} />
-            </CardActionArea>
-          )})}
+            const newStep = { ...step };
+            newStep.title = step.id + 1 + ". " + step.title;
+            return (
+              <CardActionArea key={step.title}>
+                <ProjectCard {...newStep} />
+              </CardActionArea>
+            );
+          })}
         </Stack>
 
         <Fab
@@ -79,5 +87,6 @@ export function ProjectStepsPage(props: ProjectStepsPageProps) {
         </Fab>
       </Box>
       <BottomNavBar />
-  </>
+    </>
+  );
 }
