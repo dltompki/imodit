@@ -33,11 +33,11 @@ export function ProjectStepsPage(props: ProjectStepsPageProps) {
         title={project.title}
         leftButtonText="BackIcon"
         leftButtonAction={() => {
-          void navigation(-1);
+          void navigation("/create");
         }}
         rightButtonText="Publish"
         rightButtonAction={() => {
-          console.log("Publish project");
+          void navigation("/create/publish/" + project_id);
         }}
       />
       <Box

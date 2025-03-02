@@ -6,6 +6,7 @@ import { NameProjectPage } from "./stories/NameProjectPage";
 import { ProjectStepsPage } from "./stories/ProjectStepsPage";
 import React from "react";
 import { StepDetailPage } from "./stories/StepDetailPage";
+import { PublishProject } from "./stories/ProjectPublishPage";
 
 export interface Step {
   title: string;
@@ -22,6 +23,7 @@ export interface Project {
   description: string;
   id: number;
   steps: Step[];
+  being_reviewed?: boolean;
 }
 
 function App() {
@@ -44,17 +46,8 @@ function App() {
           path="/create/name"
           element={
             <NameProjectPage
-              createProject={(name: string) => {
-                projects.push({
-                  title: name,
-                  description: "",
-                  image: "",
-                  id: lastId,
-                  steps: [],
-                });
-                lastId += 1;
-                return lastId - 1;
-              }}
+              projects={projects}
+              setProjects={setProjects}
             />
           }
         />
@@ -65,6 +58,10 @@ function App() {
         <Route
           path="/create/:id/:stepId"
           element={<StepDetailPage projects={projects} setProjects={setProjects} />}
+        />
+        <Route
+          path="/create/publish/:id/"
+          element={<PublishProject projects={projects} setProjects={setProjects} />}
         />
       </Routes>
       <BottomNavBar />

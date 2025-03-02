@@ -38,20 +38,23 @@ export const Default: Story = {
             title: "Uninstall Old Engine",
             description: "",
             id: 0,
-            coverImageIndex: 0,
-            images: [ "https://hips.hearstapps.com/hmg-prod/images/gettyimages-73743260-1553736466.jpg?crop=1.00xw:0.916xh;0,0.0534xh&resize=980:*"],
-            threeDImages: []
+            images: ["https://hips.hearstapps.com/hmg-prod/images/gettyimages-73743260-1553736466.jpg?crop=1.00xw:0.916xh;0,0.0534xh&resize=980:*"],
+            threeDImages: [],
+            safetyEquipment: [],
+            tools: []
           },
           {
             title: "Reinstall New Engine",
             description: "",
             id: 1,
-            coverImageIndex: 0,
-            images: [ "https://hips.hearstapps.com/hmg-prod/images/gettyimages-73743260-1553736466.jpg?crop=1.00xw:0.916xh;0,0.0534xh&resize=980:*"],
-            threeDImages: []
+            images: ["https://hips.hearstapps.com/hmg-prod/images/gettyimages-73743260-1553736466.jpg?crop=1.00xw:0.916xh;0,0.0534xh&resize=980:*"],
+            threeDImages: [],
+            safetyEquipment: [],
+            tools: []
           },
         ],
       },
     ],
+    setProjects: () => {},
   },
 };

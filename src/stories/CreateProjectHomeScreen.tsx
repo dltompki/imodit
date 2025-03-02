@@ -54,8 +54,11 @@ export function CreateProjectHomeScreen(props: CreateProjectProps) {
           spacing={2}
           sx={{ top: 80, position: "absolute" }}
         >
-          {props.projects.map((project) => (
-            <CardActionArea
+          {props.projects.map((project) => {
+            if (project.being_reviewed) {
+              return <ProjectCard {...project} description="Being Reviewed..." />;
+            }
+            return <CardActionArea
               key={project.title}
               onClick={() => {
                 void navigation("/create/" + project.id);
@@ -63,7 +66,7 @@ export function CreateProjectHomeScreen(props: CreateProjectProps) {
             >
               <ProjectCard {...project} />
             </CardActionArea>
-          ))}
+          })}
         </Stack>
 
         <Fab

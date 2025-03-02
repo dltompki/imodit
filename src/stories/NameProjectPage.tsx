@@ -2,9 +2,11 @@ import { Box, Stack, TextField, Typography } from "@mui/material";
 import { Topbar } from "./Topbar";
 import BottomNavBar from "./BottomNavBar";
 import { useNavigate } from "react-router-dom";
+import { Project } from "../App";
 
 export interface CreateProjectProps {
-  createProject: (name: string) => number;
+  projects: Project[];
+  setProjects: (projects: Project[]) => void;
 }
 
 export function NameProjectPage(props: CreateProjectProps) {
@@ -15,6 +17,11 @@ export function NameProjectPage(props: CreateProjectProps) {
       <Topbar
         title="Name your Project"
         leftButtonText="BackIcon"
+        leftButtonAction={
+          () => {
+            void navigation("/create");
+          }
+        }
         rightButtonText="Create"
         rightButtonAction={() => {
           console.log("Create project");
@@ -26,7 +33,18 @@ export function NameProjectPage(props: CreateProjectProps) {
             console.log();
 
             // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-            const id = props.createProject(name);
+            
+            const id = props.projects.length + 1;
+            const newProject = {
+              id: id,
+              title: name,
+              steps: [],
+              image: "",
+              description: ""
+            }
+
+            props.setProjects([...props.projects, newProject]);
+
             void navigation("/create/" + id);
           }
         }}

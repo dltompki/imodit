@@ -33,10 +33,6 @@ export const Topbar: React.FC<TopbarProps> = (props: TopbarProps) => {
       leftButtonAction = () => {
         void navigate("/");
       };
-    } else if (props.leftButtonText === "BackIcon") {
-      leftButtonAction = () => {
-        void navigate(-1);
-      };
     }
   }
 
