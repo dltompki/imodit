@@ -6,12 +6,13 @@ import MenuBookIcon from "@mui/icons-material/MenuBook";
 import { Paper } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
+import Paths from "./flows/paths";
 
 enum NavBarState {
   None = "/",
   Learn = "/learn",
   Create = "/create",
-  Scan = "/scan",
+  Scan = Paths.scanQrCode,
 }
 
 export default function BottomNavBar() {
@@ -51,8 +52,8 @@ export default function BottomNavBar() {
         />
         <BottomNavigationAction
           component={Link}
-          to="/scan"
-          value="/scan"
+          to={Paths.scanQrCode}
+          value={Paths.scanQrCode}
           label="Scan"
           icon={<QrCodeIcon />}
         />

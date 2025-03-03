@@ -7,10 +7,15 @@ import { ProjectStepsPage } from "./stories/ProjectStepsPage";
 import React from "react";
 import { StepDetailPage } from "./stories/StepDetailPage";
 import { PublishProject } from "./stories/ProjectPublishPage";
+
 import { SelectCarPage } from "./stories/SelectCarPage";
 import { SystemSelectPage } from "./stories/SystemSelectPage";
 import { LearnGuidePage } from "./stories/LearnGuidePage";
 import { SubsystemSelectPage } from "./stories/SubsystemPage";
+
+import { ScanQrCodeScreen } from "./stories/flows/do/ScanQrCodeScreen";
+import Paths from "./stories/flows/paths";
+
 
 export interface Step {
   title: string;
@@ -39,6 +44,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/learn" element={<SelectCarPage />} />
         <Route path="/scan" element={<p>scan</p>} />
+
         <Route
           path="/create"
           element={<CreateProjectHomeScreen projects={projects} />}
@@ -67,6 +73,7 @@ function App() {
             <PublishProject projects={projects} setProjects={setProjects} />
           }
         />
+
         <Route
           path="/learn/:carId"
           element={<SystemSelectPage></SystemSelectPage>}
@@ -79,6 +86,9 @@ function App() {
           path="/learn/:carId/:systemId/:subsystemId"
           element={<LearnGuidePage></LearnGuidePage>}
         ></Route>
+
+        <Route path={Paths.scanQrCode} element={<ScanQrCodeScreen />} />
+
       </Routes>
       <BottomNavBar />
     </BrowserRouter>

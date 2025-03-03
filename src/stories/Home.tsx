@@ -2,6 +2,7 @@ import { Box, Button, Stack } from "@mui/material";
 import { MenuBook, QrCodeScanner, Create } from "@mui/icons-material";
 import { Topbar } from "./Topbar";
 import { Link } from "react-router-dom";
+import Paths from "./flows/paths";
 
 export const Home: React.FC = () => {
   return (
@@ -40,7 +41,7 @@ export const Home: React.FC = () => {
           </Button>
           <Button
             component={Link}
-            to="/scan"
+            to={Paths.scanQrCode}
             variant="contained"
             size="large"
             startIcon={<QrCodeScanner />}
