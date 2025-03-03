@@ -24,7 +24,7 @@ export function CameraView() {
       console.log(button);
       setCamSize({
         width: outer.width,
-        height: (outer.height - button.height) * 0.8,
+        height: (outer.height - button.height) * 0.7,
       });
     }
   }, []);
