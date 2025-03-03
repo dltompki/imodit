@@ -7,6 +7,8 @@ import { ProjectStepsPage } from "./stories/ProjectStepsPage";
 import React from "react";
 import { StepDetailPage } from "./stories/StepDetailPage";
 import { PublishProject } from "./stories/ProjectPublishPage";
+import { ScanQrCodeScreen } from "./stories/flows/do/ScanQrCodeScreen";
+import Paths from "./stories/flows/paths";
 
 export interface Step {
   title: string;
@@ -34,7 +36,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/learn" element={<p>learn</p>} />
-        <Route path="/scan" element={<p>scan</p>} />
         <Route
           path="/create"
           element={<CreateProjectHomeScreen projects={projects} />}
@@ -63,6 +64,7 @@ function App() {
             <PublishProject projects={projects} setProjects={setProjects} />
           }
         />
+        <Route path={Paths.scanQrCode} element={<ScanQrCodeScreen />} />
       </Routes>
       <BottomNavBar />
     </BrowserRouter>
