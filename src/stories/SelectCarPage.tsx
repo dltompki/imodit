@@ -11,6 +11,7 @@ import {
 import { Topbar } from "./Topbar";
 import { Dispatch, useState } from "react";
 import BottomNavBar from "./BottomNavBar";
+import { useNavigate } from "react-router-dom";
 
 const mockCarData: Car[] = [
   {
@@ -90,6 +91,7 @@ export const SelectCarPage = () => {
   const [makeFilter, setMakeFilter] = useState("");
   const [yearFilter, setYearFilter] = useState("");
   const [modelFilter, setModelFilter] = useState("");
+  const navigation = useNavigate();
 
   function compileListOfModels() {
     const modelList = carList.map((value) => {
@@ -143,6 +145,11 @@ export const SelectCarPage = () => {
             display: "flex",
             border: "0px",
             backgroundColor: "transparent",
+          }}
+          onClick={() => {
+            void navigation(
+              "/learn/" + `${value.make}_${value.model}_${value.year}`,
+            );
           }}
         >
           <ListItem>{`${value.year} ${value.make} ${value.model}`}</ListItem>
