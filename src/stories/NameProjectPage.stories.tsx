@@ -31,7 +31,8 @@ const routeParameters = {
 
 export const Default: Story = {
   args: {
-    createProject: () => 0,
+    projects: [],
+    setProjects: () => {},
     ...routeParameters,
   },
 };

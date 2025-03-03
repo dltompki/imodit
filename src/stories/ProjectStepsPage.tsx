@@ -9,6 +9,7 @@ import ProjectCard from "./ProjectCard";
 
 interface ProjectStepsPageProps {
   projects: Project[];
+  setProjects: (projects: Project[]) => void;
 }
 
 export function ProjectStepsPage(props: ProjectStepsPageProps) {
@@ -32,7 +33,11 @@ export function ProjectStepsPage(props: ProjectStepsPageProps) {
         title={project.title}
         leftButtonText="BackIcon"
         leftButtonAction={() => {
-          void navigation(-1);
+          void navigation("/create");
+        }}
+        rightButtonText="Publish"
+        rightButtonAction={() => {
+          void navigation("/create/publish/" + project_id);
         }}
       />
       <Box
@@ -68,8 +73,13 @@ export function ProjectStepsPage(props: ProjectStepsPageProps) {
             const newStep = { ...step };
             newStep.title = step.id + 1 + ". " + step.title;
             return (
-              <CardActionArea key={step.title}>
-                <ProjectCard {...newStep} />
+              <CardActionArea
+                key={step.title}
+                onClick={() => {
+                  void navigation("/create/" + project_id + "/" + step.id);
+                }}
+              >
+                <ProjectCard {...newStep} image={step.images[0]} />
               </CardActionArea>
             );
           })}
@@ -80,7 +90,33 @@ export function ProjectStepsPage(props: ProjectStepsPageProps) {
           aria-label="add"
           sx={fabStyle}
           onClick={() => {
-            void navigation("/create/name");
+            // Create new step
+            const newStep = {
+              title: "",
+              description: "",
+              id: project.steps.length,
+              images: [],
+              threeDImages: [],
+              safetyEquipment: [],
+              tools: [],
+            };
+
+            // Update project
+            const newProject = {
+              ...project,
+              steps: [...project.steps, newStep],
+            };
+
+            const newProjects = props.projects.map((p) => {
+              if (p.id === project_id) {
+                return newProject;
+              }
+              return p;
+            });
+
+            props.setProjects(newProjects);
+
+            void navigation("/create/" + project_id + "/" + newStep.id);
           }}
         >
           <AddIcon />
