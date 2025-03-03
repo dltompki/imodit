@@ -29,7 +29,8 @@ export function CameraView() {
     }
   }, []);
   const capture = useCallback(() => {
-    const _imageSrc = webcamRef.current?.getScreenshot();
+    // this function returns a photo if we want it
+    webcamRef.current?.getScreenshot();
   }, [webcamRef]);
   return (
     <Box ref={outerRef} sx={{ height: "100vh" }}>
