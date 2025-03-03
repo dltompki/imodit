@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Typography, Box, IconButton } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
-import TwitterIcon from "@mui/icons-material/Twitter";
+import XIcon from "@mui/icons-material/X";
 import ShareIcon from "@mui/icons-material/Share";
 import confettiImg from "./assets/confetti_white_background.png";
 
@@ -77,8 +77,8 @@ const CongratsSharePage: React.FC = () => {
         <IconButton color="primary" aria-label="instagram">
           <InstagramIcon />
         </IconButton>
-        <IconButton color="primary" aria-label="twitter">
-          <TwitterIcon />
+        <IconButton color="primary" aria-label="x">
+          <XIcon />
         </IconButton>
         <IconButton color="primary" aria-label="share">
           <ShareIcon />
