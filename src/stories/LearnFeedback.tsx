@@ -6,7 +6,11 @@ enum successState {
   NOINPUT,
 }
 
-export const LearnFeedback = () => {
+interface LearnFeedbackProps {
+  visible: boolean;
+}
+
+export const LearnFeedback = (props: LearnFeedbackProps) => {
   const [success, setSuccess] = useState<successState>(successState.NOINPUT);
   const textValue = useRef("");
 
@@ -18,7 +22,9 @@ export const LearnFeedback = () => {
   }
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column" }}>
+    <Box
+      sx={{ flexDirection: "column", display: props.visible ? "flex" : "none" }}
+    >
       <Typography
         variant="h3"
         sx={{
@@ -47,7 +53,7 @@ export const LearnFeedback = () => {
         />
         <Button
           variant="outlined"
-          sx={{ position: "absolute", alignSelf: "flex-end", mt: 11 }}
+          sx={{ position: "absolute", alignSelf: "flex-end", mt: 12, mr: 1 }}
           onClick={handleSubmit}
         >
           <Typography>Submit</Typography>
