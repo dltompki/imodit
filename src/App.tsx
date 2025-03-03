@@ -16,7 +16,6 @@ import { SubsystemSelectPage } from "./stories/SubsystemPage";
 import { ScanQrCodeScreen } from "./stories/flows/do/ScanQrCodeScreen";
 import Paths from "./stories/flows/paths";
 
-
 export interface Step {
   title: string;
   description: string;
@@ -88,7 +87,6 @@ function App() {
         ></Route>
 
         <Route path={Paths.scanQrCode} element={<ScanQrCodeScreen />} />
-
       </Routes>
       <BottomNavBar />
     </BrowserRouter>
