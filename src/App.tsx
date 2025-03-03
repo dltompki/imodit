@@ -9,6 +9,7 @@ import { StepDetailPage } from "./stories/StepDetailPage";
 import { PublishProject } from "./stories/ProjectPublishPage";
 import { ScanQrCodeScreen } from "./stories/flows/do/ScanQrCodeScreen";
 import Paths from "./stories/flows/paths";
+import BeginInstructionScreen from "./stories/flows/do/BeginInstructionScreen";
 
 export interface Step {
   title: string;
@@ -65,6 +66,10 @@ function App() {
           }
         />
         <Route path={Paths.scanQrCode} element={<ScanQrCodeScreen />} />
+        <Route
+          path={Paths.instructionBegin}
+          element={<BeginInstructionScreen />}
+        />
       </Routes>
       <BottomNavBar />
     </BrowserRouter>
