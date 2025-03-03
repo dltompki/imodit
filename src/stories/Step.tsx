@@ -4,13 +4,17 @@ interface StepType {
   image: string;
   caption: string;
   instructions: string;
+  title: string;
 }
 
 export const Step: React.FC<StepType> = (props: StepType) => {
   return (
     <Box sx={{ paddingTop: 3, paddingBottom: 3 }}>
       <Box sx={{ display: "flex", flexDirection: "column" }}>
-        <img src="#" />
+        <img src={props.image} />
+        <Typography variant="h5" sx={{ alignSelf: "center", marginBottom: 1 }}>
+          {props.title}
+        </Typography>
         <Typography
           variant="h6"
           sx={{ alignSelf: "center", fontWeight: "bold" }}
