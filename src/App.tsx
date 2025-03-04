@@ -16,6 +16,7 @@ import { SubsystemSelectPage } from "./stories/SubsystemPage";
 import { ScanQrCodeScreen } from "./stories/flows/do/ScanQrCodeScreen";
 import Paths from "./stories/flows/paths";
 import BeginInstructionScreen from "./stories/flows/do/BeginInstructionScreen";
+import CaptureSafteyEquipmentScreen from "./stories/flows/do/CaptureSafteyEquipmentScreen";
 
 export interface Step {
   title: string;
@@ -91,6 +92,10 @@ function App() {
         <Route
           path={Paths.instructionBegin}
           element={<BeginInstructionScreen />}
+        />
+        <Route
+          path={Paths.instructionSaftey}
+          element={<CaptureSafteyEquipmentScreen />}
         />
       </Routes>
       <BottomNavBar />

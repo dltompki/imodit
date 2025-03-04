@@ -1,6 +1,8 @@
 import { Box, Button } from "@mui/material";
 import BottomNavBar from "../../BottomNavBar";
 import { Topbar } from "../../Topbar";
+import { Link } from "react-router-dom";
+import Paths from "../paths";
 
 const BeginInstructionScreen: React.FC = () => {
   return (
@@ -13,7 +15,12 @@ const BeginInstructionScreen: React.FC = () => {
           sx={{ width: "100%" }}
         />
         <Box sx={{ display: "flex", justifyContent: "center" }}>
-          <Button variant="contained" sx={{ paddingX: "auto" }}>
+          <Button
+            component={Link}
+            to={Paths.instructionSaftey}
+            variant="contained"
+            sx={{ paddingX: "auto" }}
+          >
             Begin
           </Button>
         </Box>

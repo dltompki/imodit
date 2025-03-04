@@ -9,7 +9,7 @@ const meta = {
   tags: ["autodocs"],
   parameters: {
     // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
     setState: { type: "function", control: false },
