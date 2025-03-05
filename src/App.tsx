@@ -16,6 +16,8 @@ import { SubsystemSelectPage } from "./stories/SubsystemPage";
 import { ScanQrCodeScreen } from "./stories/flows/do/ScanQrCodeScreen";
 import Paths from "./stories/flows/paths";
 import BeginInstructionScreen from "./stories/flows/do/BeginInstructionScreen";
+import CongratsShareScreen from "./stories/flows/do/CongratsShareScreen";
+import RatingFeedbackScreen from "./stories/flows/do/RatingFeedbackScreen";
 
 export interface Step {
   title: string;
@@ -92,6 +94,11 @@ function App() {
           path={Paths.instructionBegin}
           element={<BeginInstructionScreen />}
         />
+        <Route
+          path={Paths.endOfInstruction}
+          element={<CongratsShareScreen />}
+        />
+        <Route path={Paths.rate} element={<RatingFeedbackScreen />} />
       </Routes>
       <BottomNavBar />
     </BrowserRouter>

@@ -41,12 +41,10 @@ const Pagination: React.FC<PaginationProps> = ({
   return (
     <div
       style={{
-        position: "fixed",
-        bottom: 20,
-        width: "90%",
+        width: "100%",
         display: "flex",
         justifyContent: "space-between",
-        padding: "2 2px",
+        padding: "2px 2px",
       }}
     >
       {/* Left Button */}
