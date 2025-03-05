@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import RatingFeedbackPage from "./RatingFeedbackPage";
+import RatingFeedbackScreen from "./flows/do/RatingFeedbackScreen.tsx";
 
 const meta = {
-  component: RatingFeedbackPage,
-} satisfies Meta<typeof RatingFeedbackPage>;
+  component: RatingFeedbackScreen,
+} satisfies Meta<typeof RatingFeedbackScreen>;
 
 export default meta;
 
