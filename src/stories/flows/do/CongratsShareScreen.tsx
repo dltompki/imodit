@@ -14,7 +14,7 @@ const CongratsShareScreen: React.FC = () => {
   const navigation = useNavigate();
 
   const handleLeftClick = () => {
-    void navigation(Paths.endOfInstruction);
+    void navigation(Paths.stepThree);
   };
 
   const handleRightClick = () => {

@@ -20,6 +20,8 @@ import CaptureSafteyEquipmentScreen from "./stories/flows/do/CaptureSafteyEquipm
 import StepPage from "./stories/flows/do/StepPage";
 import CongratsShareScreen from "./stories/flows/do/CongratsShareScreen";
 import RatingFeedbackScreen from "./stories/flows/do/RatingFeedbackScreen";
+import StepValidationScreen from "./stories/flows/do/StepValidationScreen";
+import TroubleshootingScreen from "./stories/flows/do/TroubleshootingScreen";
 
 export interface Step {
   title: string;
@@ -118,13 +120,18 @@ function App() {
           element={
             <StepPage
               previous={Paths.stepOne}
-              next=""
+              next={Paths.stepThree}
               title="Step 2: Remove the Air Intake System"
               caption=""
               instructions="Unclip or unbolt the air filter housing and remove the air filter. Loosen the clamps securing the intake tube and disconnect any attached sensors or hoses. Carefully pull the intake tube away from the throttle body and remove the entire assembly."
               image="https://i.pinimg.com/originals/3e/5d/3c/3e5d3cbd0bddfc3042e0c6a2921ec58e.jpg"
             />
           }
+        />
+        <Route path={Paths.stepThree} element={<StepValidationScreen />} />
+        <Route
+          path={Paths.troubleshooting}
+          element={<TroubleshootingScreen />}
         />
         <Route
           path={Paths.endOfInstruction}
