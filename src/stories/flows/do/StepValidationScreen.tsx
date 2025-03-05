@@ -81,7 +81,12 @@ const StepValidationScreen: React.FC = () => {
 
       {/* Pagination with only the Left Button */}
       <Box
-        sx={{ display: "flex", justifyContent: "space-between", paddingX: 2 }}
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          paddingX: 2,
+          marginBottom: 2,
+        }}
       >
         <Pagination rightButton={null} onLeftButtonClick={handlePrevClick} />
       </Box>

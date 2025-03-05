@@ -22,6 +22,7 @@ import CongratsShareScreen from "./stories/flows/do/CongratsShareScreen";
 import RatingFeedbackScreen from "./stories/flows/do/RatingFeedbackScreen";
 import StepValidationScreen from "./stories/flows/do/StepValidationScreen";
 import TroubleshootingScreen from "./stories/flows/do/TroubleshootingScreen";
+import ChecklistScreen from "./stories/flows/do/ChecklistScreen";
 
 export interface Step {
   title: string;
@@ -102,11 +103,12 @@ function App() {
           path={Paths.instructionSaftey}
           element={<CaptureSafteyEquipmentScreen />}
         />
+        <Route path={Paths.checklist} element={<ChecklistScreen />} />
         <Route
           path={Paths.stepOne}
           element={
             <StepPage
-              previous={Paths.instructionSaftey}
+              previous={Paths.checklist}
               next={Paths.stepTwo}
               title="Step 1: Remove the Radiator"
               caption="the radiator is pictured in yellow"
