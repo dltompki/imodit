@@ -1,6 +1,8 @@
 import { Box, Button } from "@mui/material";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import Webcam from "react-webcam";
+import Paths from "./flows/paths";
 
 const videoConstraints = {
   width: 1280,
@@ -20,8 +22,6 @@ export function CameraView() {
     if (outerRef.current && buttonRef.current) {
       const outer = outerRef.current.getBoundingClientRect();
       const button = buttonRef.current.getBoundingClientRect();
-      console.log(outer);
-      console.log(button);
       setCamSize({
         width: outer.width,
         height: (outer.height - button.height) * 0.7,
@@ -51,7 +51,12 @@ export function CameraView() {
           justifyContent: "center",
         }}
       >
-        <Button variant="contained" onClick={capture}>
+        <Button
+          component={Link}
+          to={Paths.stepOne}
+          variant="contained"
+          onClick={capture}
+        >
           Capture photo
         </Button>
       </Box>
