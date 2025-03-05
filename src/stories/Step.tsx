@@ -24,7 +24,7 @@ export const Step: React.FC<StepType> = (props: StepType) => {
           {props.caption}
         </Typography>
       </Box>
-      <Typography variant="body1" sx={{ textAlign: "left", paddingX: "2%" }}>
+      <Typography variant="body1" sx={{ textAlign: "left", paddingX: "5%" }}>
         {props.instructions}
       </Typography>
     </Box>

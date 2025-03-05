@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import CongratsSharePage from "./CongratsSharePage";
+import CongratsShareScreen from "./flows/do/CongratsShareScreen.tsx";
 
 const meta = {
-  component: CongratsSharePage,
-} satisfies Meta<typeof CongratsSharePage>;
+  component: CongratsShareScreen,
+} satisfies Meta<typeof CongratsShareScreen>;
 
 export default meta;
 

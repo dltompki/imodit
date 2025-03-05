@@ -2,8 +2,9 @@ import React from "react";
 import { Topbar } from "../../Topbar";
 import { Step } from "../../Step";
 import BottomNavBar from "../../BottomNavBar";
-import { Box, Button } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Box } from "@mui/material";
+import Pagination from "../../Pagination.tsx";
+import { useNavigate } from "react-router-dom";
 
 interface StepPageProps {
   title: string;
@@ -15,6 +16,8 @@ interface StepPageProps {
 }
 
 const StepPage: React.FC<StepPageProps> = (props: StepPageProps) => {
+  const navigate = useNavigate();
+
   return (
     <>
       <Topbar title={props.title} />
@@ -23,19 +26,19 @@ const StepPage: React.FC<StepPageProps> = (props: StepPageProps) => {
         caption={props.caption}
         instructions={props.instructions}
       />
+      {/* Pagination - Only show right button if `next` exists */}
       <Box
         sx={{
           display: "flex",
-          justifyContent: "space-between",
-          paddingX: "2%",
+          justifyContent: "center",
+          paddingX: 2,
+          paddingTop: 5,
         }}
       >
-        <Button component={Link} to={props.previous} variant="outlined">
-          Previous
-        </Button>
-        <Button component={Link} to={props.next} variant="outlined">
-          Next
-        </Button>
+        <Pagination
+          onLeftButtonClick={() => void navigate(props.previous)}
+          onRightButtonClick={() => void navigate(props.next)}
+        />
       </Box>
       <BottomNavBar />
     </>
