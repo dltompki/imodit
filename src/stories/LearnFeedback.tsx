@@ -53,7 +53,7 @@ export const LearnFeedback = (props: LearnFeedbackProps) => {
         />
         <Button
           variant="outlined"
-          sx={{ position: "absolute", alignSelf: "flex-end", mt: 12, mr: 1 }}
+          sx={{ position: "absolute", alignSelf: "flex-end", mt: "20%", mr: 1 }}
           onClick={handleSubmit}
         >
           <Typography>Submit</Typography>
