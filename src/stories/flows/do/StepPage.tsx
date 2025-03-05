@@ -23,11 +23,17 @@ const StepPage: React.FC<StepPageProps> = (props: StepPageProps) => {
         caption={props.caption}
         instructions={props.instructions}
       />
-      <Box sx={{ display: "flex" }}>
-        <Button component={Link} to={props.previous}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          paddingX: "2%",
+        }}
+      >
+        <Button component={Link} to={props.previous} variant="outlined">
           Previous
         </Button>
-        <Button component={Link} to={props.next}>
+        <Button component={Link} to={props.next} variant="outlined">
           Next
         </Button>
       </Box>

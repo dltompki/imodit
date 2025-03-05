@@ -106,8 +106,8 @@ function App() {
               next={Paths.stepTwo}
               title="Step 1: Remove the Radiator"
               caption="the radiator is pictured in yellow"
-              instructions=""
-              image=""
+              instructions="Disconnect the upper and lower radiator hoses, then detach any electrical connections, such as the cooling fan wiring. Remove the radiator mounting bolts or brackets, and carefully lift the radiator out of the engine bay."
+              image="http://www.movinggraphics.ca/600x450/Car-RWD-Exploded.jpg"
             />
           }
         />
@@ -119,8 +119,8 @@ function App() {
               next=""
               title="Step 2: Remove the Air Intake System"
               caption=""
-              instructions=""
-              image=""
+              instructions="Unclip or unbolt the air filter housing and remove the air filter. Loosen the clamps securing the intake tube and disconnect any attached sensors or hoses. Carefully pull the intake tube away from the throttle body and remove the entire assembly."
+              image="https://i.pinimg.com/originals/3e/5d/3c/3e5d3cbd0bddfc3042e0c6a2921ec58e.jpg"
             />
           }
         />

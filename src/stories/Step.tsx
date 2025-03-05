@@ -9,14 +9,11 @@ interface StepType {
 
 export const Step: React.FC<StepType> = (props: StepType) => {
   return (
-    <Box sx={{ paddingTop: 3, paddingBottom: 3 }}>
+    <Box sx={{ paddingTop: 3, paddingBottom: 3, width: "100vw" }}>
       <Box sx={{ display: "flex", flexDirection: "column" }}>
-        <img
-          src={props.image}
-          width={250}
-          height={250}
-          style={{ alignSelf: "center" }}
-        />
+        <Box sx={{ justifyContent: "center" }}>
+          <img src={props.image} width="100%" style={{ alignSelf: "center" }} />
+        </Box>
         <Typography variant="h5" sx={{ alignSelf: "center", marginBottom: 1 }}>
           {props.title}
         </Typography>
@@ -27,7 +24,7 @@ export const Step: React.FC<StepType> = (props: StepType) => {
           {props.caption}
         </Typography>
       </Box>
-      <Typography variant="body1" sx={{ textAlign: "left" }}>
+      <Typography variant="body1" sx={{ textAlign: "left", paddingX: "2%" }}>
         {props.instructions}
       </Typography>
     </Box>
