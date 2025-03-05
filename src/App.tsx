@@ -17,6 +17,7 @@ import { ScanQrCodeScreen } from "./stories/flows/do/ScanQrCodeScreen";
 import Paths from "./stories/flows/paths";
 import BeginInstructionScreen from "./stories/flows/do/BeginInstructionScreen";
 import CaptureSafteyEquipmentScreen from "./stories/flows/do/CaptureSafteyEquipmentScreen";
+import StepPage from "./stories/flows/do/StepPage";
 
 export interface Step {
   title: string;
@@ -96,6 +97,32 @@ function App() {
         <Route
           path={Paths.instructionSaftey}
           element={<CaptureSafteyEquipmentScreen />}
+        />
+        <Route
+          path={Paths.stepOne}
+          element={
+            <StepPage
+              previous={Paths.instructionSaftey}
+              next={Paths.stepTwo}
+              title="Step 1: Remove the Radiator"
+              caption="the radiator is pictured in yellow"
+              instructions=""
+              image=""
+            />
+          }
+        />
+        <Route
+          path={Paths.stepTwo}
+          element={
+            <StepPage
+              previous={Paths.stepOne}
+              next=""
+              title="Step 2: Remove the Air Intake System"
+              caption=""
+              instructions=""
+              image=""
+            />
+          }
         />
       </Routes>
       <BottomNavBar />
