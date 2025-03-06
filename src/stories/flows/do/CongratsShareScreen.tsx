@@ -34,7 +34,7 @@ const CongratsShareScreen: React.FC = () => {
           textAlign: "center",
           maxHeight: "100vh",
           minWidth: "90%",
-          maxWidth: "100%",
+          maxWidth: "100vw",
           overflow: "hidden",
         }}
       >

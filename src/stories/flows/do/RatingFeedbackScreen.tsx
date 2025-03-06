@@ -44,9 +44,12 @@ const RatingFeedbackScreen: React.FC = () => {
       <Box
         sx={{
           textAlign: "center",
-          minWidth: "100vw",
+          width: "100vw",
+          maxWidth: "100%",
+          maxHeight: "89vh",
           verticalAlign: "center",
           horizontalAlign: "center",
+          overflow: "hidden",
         }}
       >
         {/* Title */}
@@ -54,7 +57,7 @@ const RatingFeedbackScreen: React.FC = () => {
           variant="h4"
           sx={{
             fontWeight: "bold",
-            marginTop: 17,
+            paddingTop: 15,
             marginBottom: 3,
             fontSize: { xs: "2rem", sm: "2rem" }, // Responsive
           }}
@@ -127,7 +130,7 @@ const RatingFeedbackScreen: React.FC = () => {
             display: "flex",
             justifyContent: "center",
             paddingX: 2,
-            marginTop: 16,
+            marginTop: 15,
             width: "362px",
           }}
         >

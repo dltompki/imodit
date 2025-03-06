@@ -2,6 +2,7 @@ export enum Paths {
   scanQrCode = "/instructions/scan",
   instructionBegin = "/instructions/begin",
   instructionSaftey = "/instructions/safety",
+  checklist = "/instructions/checklist",
   stepOne = "/instructions/one",
   stepTwo = "/instructions/two",
   stepThree = "/instructions/three",
