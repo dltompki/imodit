@@ -53,7 +53,7 @@ export function CameraView() {
       >
         <Button
           component={Link}
-          to={Paths.stepOne}
+          to={Paths.checklist}
           variant="contained"
           onClick={capture}
         >
