@@ -13,7 +13,14 @@ export function ScanQrCodeScreen() {
   return (
     <>
       <Topbar title="Scan the QR Code on Your Product's Package" />
-      <Box sx={{ flexGrow: 1, width: "100vw", alignItems: "center", height: "100vw" }}>
+      <Box
+        sx={{
+          flexGrow: 1,
+          width: "100vw",
+          alignItems: "center",
+          height: "100vw",
+        }}
+      >
         <QrCodeScanner
           onScan={() => {
             void navigation(Paths.instructionBegin);
