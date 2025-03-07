@@ -11,7 +11,7 @@ import { Project } from "../App";
 
 interface CreateProjectProps {
   projects: Project[];
-  setProjects: (projects: Project[]) => void
+  setProjects: (projects: Project[]) => void;
 }
 
 export function CreateProjectHomeScreen(props: CreateProjectProps) {
@@ -23,9 +23,11 @@ export function CreateProjectHomeScreen(props: CreateProjectProps) {
     right: 16,
   };
 
-  function handleDeleteProject(projectToDelete: number){
-    const newProjects = props.projects.filter((project) => {return project.id != projectToDelete})
-    props.setProjects(newProjects)
+  function handleDeleteProject(projectToDelete: number) {
+    const newProjects = props.projects.filter((project) => {
+      return project.id != projectToDelete;
+    });
+    props.setProjects(newProjects);
   }
 
   return (
@@ -71,7 +73,14 @@ export function CreateProjectHomeScreen(props: CreateProjectProps) {
               );
             }
             return (
-                <ProjectCard {...project} onCardClick={() => void navigation("/create/" + project.id)} key={project.id} onDelete={() => {handleDeleteProject(project.id)}}/>
+              <ProjectCard
+                {...project}
+                onCardClick={() => void navigation("/create/" + project.id)}
+                key={project.id}
+                onDelete={() => {
+                  handleDeleteProject(project.id);
+                }}
+              />
             );
           })}
         </Stack>

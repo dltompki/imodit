@@ -21,10 +21,17 @@ export function ProjectStepsPage(props: ProjectStepsPageProps) {
 
   const navigation = useNavigate();
 
-  function handleStepDeletion(stepToDelete: number){
-    const removedStep = project.steps.filter((step) =>{ return stepToDelete != step.id})
-    project.steps = removedStep.map((step) => {if (step.id > stepToDelete) {step.id -= 1} return step})
-    props.setProjects([...props.projects])
+  function handleStepDeletion(stepToDelete: number) {
+    const removedStep = project.steps.filter((step) => {
+      return stepToDelete != step.id;
+    });
+    project.steps = removedStep.map((step) => {
+      if (step.id > stepToDelete) {
+        step.id -= 1;
+      }
+      return step;
+    });
+    props.setProjects([...props.projects]);
   }
 
   const fabStyle = {
@@ -79,9 +86,15 @@ export function ProjectStepsPage(props: ProjectStepsPageProps) {
             const newStep = { ...step };
             newStep.title = step.id + 1 + ". " + step.title;
             return (
-                <ProjectCard {...newStep} image={step.images[0]} onDelete={() => handleStepDeletion(step.id)} onCardClick={() => {
+              <ProjectCard
+                {...newStep}
+                image={step.images[0]}
+                onDelete={() => handleStepDeletion(step.id)}
+                onCardClick={() => {
                   void navigation("/create/" + project_id + "/" + step.id);
-                }} key={step.id} />
+                }}
+                key={step.id}
+              />
             );
           })}
         </Stack>

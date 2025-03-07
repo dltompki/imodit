@@ -2,7 +2,12 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import { CardActionArea, CardActions, CardMedia, IconButton } from "@mui/material";
+import {
+  CardActionArea,
+  CardActions,
+  CardMedia,
+  IconButton,
+} from "@mui/material";
 import { Delete } from "@mui/icons-material";
 
 export interface ProjectCardProps {
@@ -10,8 +15,8 @@ export interface ProjectCardProps {
   title: string;
   description: string;
   id: number;
-  onDelete?: () => void
-  onCardClick?: () => void
+  onDelete?: () => void;
+  onCardClick?: () => void;
 }
 
 export default function ProjectCard(props: ProjectCardProps) {
