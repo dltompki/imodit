@@ -110,11 +110,8 @@ export function PublishProject(props: ProjectStepsPageProps) {
                     key={image}
                     style={{
                       border: "4px solid red",
-
                       borderRadius: "10px",
-
                       margin: "0.5rem",
-
                       padding: "0.5rem",
                     }}
                   >
