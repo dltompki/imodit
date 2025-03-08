@@ -33,7 +33,7 @@ export function PublishProject(props: ProjectStepsPageProps) {
   return (
     <>
       <Topbar
-        title={"Publis h" + project.title}
+        title={"Publish" + project.title}
         leftButtonText="BackIcon"
         leftButtonAction={() => {
           void navigation("/create/" + project_id);
