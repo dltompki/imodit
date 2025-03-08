@@ -33,6 +33,7 @@ export const Default: Story = {
   args: {
     projects: [],
     ...routeParameters,
+    setProjects: () => {},
   },
 };
 
@@ -49,6 +50,7 @@ export const OneProject: Story = {
       },
     ],
     ...routeParameters,
+    setProjects: () => {},
   },
 };
 
@@ -73,5 +75,6 @@ export const TwoProjects: Story = {
       },
     ],
     ...routeParameters,
+    setProjects: () => {},
   },
 };
