@@ -104,13 +104,33 @@ export function PublishProject(props: ProjectStepsPageProps) {
         >
           {project.steps.flatMap((step) => {
             return step.images.map((image) => {
-              const isSelected = coverImage === image;
+              if (coverImage === image) {
+                return (
+                  <div
+                    key={image}
+                    style={{
+                      border: "4px solid red",
 
+                      borderRadius: "10px",
+
+                      margin: "0.5rem",
+
+                      padding: "0.5rem",
+                    }}
+                  >
+                    <Multimedia
+                      image={image}
+                      onClick={() => {
+                        setCoverImage(image);
+                      }}
+                    />
+                  </div>
+                );
+              }
               return (
                 <div
                   key={image}
                   style={{
-                    border: isSelected ? "4px solid red" : "none",
                     borderRadius: "10px",
                     margin: "0.5rem",
                     padding: "0.5rem",
@@ -119,7 +139,7 @@ export function PublishProject(props: ProjectStepsPageProps) {
                   <Multimedia
                     image={image}
                     onClick={() => {
-                      setCoverImage(isSelected ? null : image);
+                      setCoverImage(image);
                     }}
                   />
                 </div>
