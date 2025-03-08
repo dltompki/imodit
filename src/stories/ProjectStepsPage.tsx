@@ -1,4 +1,4 @@
-import { CardActionArea, Fab } from "@mui/material";
+import { Fab } from "@mui/material";
 import { Box, Stack, Typography } from "@mui/material";
 import BottomNavBar from "./BottomNavBar";
 import { Topbar } from "./Topbar";
@@ -20,6 +20,19 @@ export function ProjectStepsPage(props: ProjectStepsPageProps) {
   const project = props.projects.find((project) => project.id === project_id)!;
 
   const navigation = useNavigate();
+
+  function handleStepDeletion(stepToDelete: number) {
+    const removedStep = project.steps.filter((step) => {
+      return stepToDelete != step.id;
+    });
+    project.steps = removedStep.map((step) => {
+      if (step.id > stepToDelete) {
+        step.id -= 1;
+      }
+      return step;
+    });
+    props.setProjects([...props.projects]);
+  }
 
   const fabStyle = {
     position: "absolute",
@@ -73,14 +86,15 @@ export function ProjectStepsPage(props: ProjectStepsPageProps) {
             const newStep = { ...step };
             newStep.title = step.id + 1 + ". " + step.title;
             return (
-              <CardActionArea
-                key={step.title}
-                onClick={() => {
+              <ProjectCard
+                {...newStep}
+                image={step.images[0]}
+                onDelete={() => handleStepDeletion(step.id)}
+                onCardClick={() => {
                   void navigation("/create/" + project_id + "/" + step.id);
                 }}
-              >
-                <ProjectCard {...newStep} image={step.images[0]} />
-              </CardActionArea>
+                key={step.id}
+              />
             );
           })}
         </Stack>

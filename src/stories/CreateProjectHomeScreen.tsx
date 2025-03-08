@@ -1,4 +1,4 @@
-import { Box, CardActionArea, Fab, Stack, Typography } from "@mui/material";
+import { Box, Fab, Stack, Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 
 import { Topbar } from "./Topbar";
@@ -11,6 +11,7 @@ import { Project } from "../App";
 
 interface CreateProjectProps {
   projects: Project[];
+  setProjects: (projects: Project[]) => void;
 }
 
 export function CreateProjectHomeScreen(props: CreateProjectProps) {
@@ -21,6 +22,13 @@ export function CreateProjectHomeScreen(props: CreateProjectProps) {
     bottom: 72,
     right: 16,
   };
+
+  function handleDeleteProject(projectToDelete: number) {
+    const newProjects = props.projects.filter((project) => {
+      return project.id != projectToDelete;
+    });
+    props.setProjects(newProjects);
+  }
 
   return (
     <>
@@ -65,14 +73,14 @@ export function CreateProjectHomeScreen(props: CreateProjectProps) {
               );
             }
             return (
-              <CardActionArea
+              <ProjectCard
+                {...project}
+                onCardClick={() => void navigation("/create/" + project.id)}
                 key={project.id}
-                onClick={() => {
-                  void navigation("/create/" + project.id);
+                onDelete={() => {
+                  handleDeleteProject(project.id);
                 }}
-              >
-                <ProjectCard {...project} />
-              </CardActionArea>
+              />
             );
           })}
         </Stack>

@@ -54,7 +54,12 @@ function App() {
 
         <Route
           path="/create"
-          element={<CreateProjectHomeScreen projects={projects} />}
+          element={
+            <CreateProjectHomeScreen
+              projects={projects}
+              setProjects={setProjects}
+            />
+          }
         />
         <Route
           path="/create/name"
