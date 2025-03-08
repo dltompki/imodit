@@ -9,6 +9,11 @@ import { Project } from "../App";
 import { useNavigate, useParams } from "react-router-dom";
 import { ModifyableList } from "./ModifyableList";
 import { Multimedia } from "./Multimedia";
+import ImageWithClose from "./ImageWithClose";
+
+import engine from "./assets/engine.png";
+import hoist from "./assets/hoist.png";
+
 
 interface ProjectStepsPageProps {
   projects: Project[];
@@ -35,9 +40,11 @@ export function StepDetailPage(props: ProjectStepsPageProps) {
   const [tools, setTools] = React.useState<string[]>(step.tools);
   const [imageModalOpen, setImageModalOpen] = React.useState<boolean>(false);
   const [images, setImages] = React.useState<string[]>(step.images);
-  const [threeDImages, setThreeDImages] = React.useState<string[]>(
-    step.threeDImages,
-  );
+  const [selectedImage, setSelectedImage] = React.useState<string | null>(null);
+
+  const imageGallery = [
+    engine, hoist
+  ]
 
   return (
     <>
@@ -58,7 +65,7 @@ export function StepDetailPage(props: ProjectStepsPageProps) {
             description: description,
             id: step.id,
             images: images,
-            threeDImages: threeDImages,
+            threeDImages: [],
             safetyEquipment: safetyEquipment,
             tools: tools,
           };
@@ -158,10 +165,9 @@ export function StepDetailPage(props: ProjectStepsPageProps) {
               }}
             >
               {images.map((image) => (
-                <Multimedia key={image} image={image} />
-              ))}
-              {threeDImages.map((image) => (
-                <Multimedia key={image} image={image} threeD />
+                <ImageWithClose key={image} src={image} alt="no" onClose={() => {
+                  setImages(images.filter((i) => i !== image));
+                }} />
               ))}
 
               <Multimedia
@@ -191,47 +197,35 @@ export function StepDetailPage(props: ProjectStepsPageProps) {
             p: 4,
           }}
         >
-          <Typography
-            id="modal-modal-title"
-            variant="h6"
-            component="h2"
-            sx={{ paddingBottom: 2 }}
-          >
-            Add Image
+          <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ paddingBottom: 2 }}>
+            Select an Image
           </Typography>
-          <Stack sx={{ m: 2 }}>
-            <TextField id="imageurl-input" label="Image URL" />
-            <Box sx={{ display: "flex", alignItems: "center", paddingTop: 2 }}>
-              <Typography>Is 3D?</Typography>
-              <Checkbox id="is3D-input" />
-              <Button
-                variant="contained"
-                sx={{ marginLeft: "auto" }}
-                onClick={() => {
-                  // get image url
-                  const imageUrl = (
-                    document.getElementById(
-                      "imageurl-input",
-                    ) as HTMLInputElement
-                  ).value;
-                  const is3D = (
-                    document.getElementById("is3D-input") as HTMLInputElement
-                  ).checked;
-
-                  if (is3D) {
-                    setThreeDImages([...threeDImages, imageUrl]);
-                  } else {
+          <Stack sx={{ m: 2, maxHeight: 400, overflowY: "auto" }}>
+            <Box sx={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))", gap: 2 }}>
+              {imageGallery.map((imageUrl, index) => (
+                <Box
+                  key={index}
+                  sx={{
+                    position: "relative",
+                    cursor: "pointer",
+                    border: selectedImage === imageUrl ? "2px solid #fff" : "2px solid transparent",
+                    '&:hover': { border: "2px solid #000" },
+                  }}
+                  onClick={() => {
+                    setImageModalOpen(false);
                     setImages([...images, imageUrl]);
-                  }
-
-                  setImageModalOpen(false);
-                }}
-              >
-                Save
-              </Button>
+                  }}
+                >
+                  <img src={imageUrl} alt={`Image ${index}`} style={{ width: "100%", borderRadius: 4 }} />
+                </Box>
+              ))}
             </Box>
           </Stack>
+          <Button variant="outlined" sx={{ mt: 2, width: "100%" }} onClick={() => setImageModalOpen(false)}>
+            Cancel
+          </Button>
         </Box>
+
       </Modal>
       <BottomNavBar />
     </>
