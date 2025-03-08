@@ -7,7 +7,10 @@ import { Box } from "@mui/material";
 const CaptureSafteyEquipmentScreen: React.FC = () => {
   return (
     <Box width="100vw">
-      <Topbar title="Take a Photo of Your Safety Equipment" leftButtonText="HomeIcon"/>
+      <Topbar
+        title="Take a Photo of Your Safety Equipment"
+        leftButtonText="HomeIcon"
+      />
       <CameraView />
       <BottomNavBar />
     </Box>

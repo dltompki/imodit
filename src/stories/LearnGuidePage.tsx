@@ -79,10 +79,7 @@ export const LearnGuidePage = () => {
 
   return (
     <>
-      <Topbar
-        title="Learn"
-        leftButtonText="HomeIcon"
-      ></Topbar>
+      <Topbar title="Learn" leftButtonText="HomeIcon"></Topbar>
       <Box
         sx={{
           height: "80dvh",
@@ -109,16 +106,22 @@ export const LearnGuidePage = () => {
         </Box>
         <LearnFeedback visible={feedback} />
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "space-between", pl: 2, pr: 2}}>
-      <Button onClick={          page == 0
-            ? () => {
-                void navigation(`/learn/${carId}/${systemId}`);
-              }
-            : handlePreviousPage}
-            variant="outlined"
-            sx={{ color: "black", borderColor: "black" }}
-            startIcon={<ArrowBackIos></ArrowBackIos>}>
-          Previous
+      <Box
+        sx={{ display: "flex", justifyContent: "space-between", pl: 2, pr: 2 }}
+      >
+        <Button
+          onClick={
+            page == 0
+              ? () => {
+                  void navigation(`/learn/${carId}/${systemId}`);
+                }
+              : handlePreviousPage
+          }
+          variant="outlined"
+          sx={{ color: "black", borderColor: "black" }}
+          startIcon={<ArrowBackIos></ArrowBackIos>}
+        >
+          Prev
         </Button>
         <Button
           onClick={handleNextPage}
@@ -128,7 +131,6 @@ export const LearnGuidePage = () => {
         >
           {feedback ? "Finish" : "Next"}
         </Button>
-
       </Box>
 
       <BottomNavBar></BottomNavBar>
