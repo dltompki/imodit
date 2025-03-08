@@ -19,7 +19,7 @@ const ChecklistScreen: React.FC = () => {
 
   return (
     <>
-      <Topbar title="Required Tools" />
+      <Topbar title="Required Tools" leftButtonText="HomeIcon"/>
       <Box
         sx={{
           display: "flex",

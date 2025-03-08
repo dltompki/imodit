@@ -3,7 +3,7 @@ import BottomNavBar from "./BottomNavBar";
 import { Step } from "./Step";
 import { Topbar } from "./Topbar";
 import { useState } from "react";
-import { ArrowForwardIos } from "@mui/icons-material";
+import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import { LearnFeedback } from "./LearnFeedback";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -81,14 +81,7 @@ export const LearnGuidePage = () => {
     <>
       <Topbar
         title="Learn"
-        leftButtonText="BackIcon"
-        leftButtonAction={
-          page == 0
-            ? () => {
-                void navigation(`/learn/${carId}/${systemId}`);
-              }
-            : handlePreviousPage
-        }
+        leftButtonText="HomeIcon"
       ></Topbar>
       <Box
         sx={{
@@ -116,15 +109,26 @@ export const LearnGuidePage = () => {
         </Box>
         <LearnFeedback visible={feedback} />
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "end" }}>
+      <Box sx={{ display: "flex", justifyContent: "space-between", pl: 2, pr: 2}}>
+      <Button onClick={          page == 0
+            ? () => {
+                void navigation(`/learn/${carId}/${systemId}`);
+              }
+            : handlePreviousPage}
+            variant="outlined"
+            sx={{ color: "black", borderColor: "black" }}
+            startIcon={<ArrowBackIos></ArrowBackIos>}>
+          Previous
+        </Button>
         <Button
           onClick={handleNextPage}
-          sx={{ alignSelf: "end", color: "black", borderColor: "black" }}
+          sx={{ color: "black", borderColor: "black" }}
           variant="outlined"
           endIcon={<ArrowForwardIos></ArrowForwardIos>}
         >
           {feedback ? "Finish" : "Next"}
         </Button>
+
       </Box>
 
       <BottomNavBar></BottomNavBar>

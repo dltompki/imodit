@@ -12,7 +12,7 @@ export function ScanQrCodeScreen() {
 
   return (
     <>
-      <Topbar title="Scan the QR Code on Your Product's Package" />
+      <Topbar title="Scan the QR Code on Your Product's Package" leftButtonText="HomeIcon" />
       <Box
         sx={{
           flexGrow: 1,

@@ -161,7 +161,7 @@ export const SelectCarPage = () => {
 
   return (
     <>
-      <Topbar title="Learn" />
+      <Topbar title="Learn" leftButtonText="HomeIcon"/>
       <Box
         sx={{
           width: "100vw",
