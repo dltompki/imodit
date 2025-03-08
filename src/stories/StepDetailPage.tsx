@@ -1,7 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import { Button, Checkbox, Modal } from "@mui/material";
+import { Button, Modal } from "@mui/material";
 import { Stack, Typography } from "@mui/material";
 import BottomNavBar from "./BottomNavBar";
 import { Topbar } from "./Topbar";
@@ -13,7 +13,6 @@ import ImageWithClose from "./ImageWithClose";
 
 import engine from "./assets/engine.png";
 import hoist from "./assets/hoist.png";
-
 
 interface ProjectStepsPageProps {
   projects: Project[];
@@ -40,11 +39,8 @@ export function StepDetailPage(props: ProjectStepsPageProps) {
   const [tools, setTools] = React.useState<string[]>(step.tools);
   const [imageModalOpen, setImageModalOpen] = React.useState<boolean>(false);
   const [images, setImages] = React.useState<string[]>(step.images);
-  const [selectedImage, setSelectedImage] = React.useState<string | null>(null);
 
-  const imageGallery = [
-    engine, hoist
-  ]
+  const imageGallery = [engine, hoist];
 
   return (
     <>
@@ -165,9 +161,14 @@ export function StepDetailPage(props: ProjectStepsPageProps) {
               }}
             >
               {images.map((image) => (
-                <ImageWithClose key={image} src={image} alt="no" onClose={() => {
-                  setImages(images.filter((i) => i !== image));
-                }} />
+                <ImageWithClose
+                  key={image}
+                  src={image}
+                  alt="no"
+                  onClose={() => {
+                    setImages(images.filter((i) => i !== image));
+                  }}
+                />
               ))}
 
               <Multimedia
@@ -197,35 +198,53 @@ export function StepDetailPage(props: ProjectStepsPageProps) {
             p: 4,
           }}
         >
-          <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ paddingBottom: 2 }}>
+          <Typography
+            id="modal-modal-title"
+            variant="h6"
+            component="h2"
+            sx={{ paddingBottom: 2 }}
+          >
             Select an Image
           </Typography>
           <Stack sx={{ m: 2, maxHeight: 400, overflowY: "auto" }}>
-            <Box sx={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))", gap: 2 }}>
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))",
+                gap: 2,
+              }}
+            >
               {imageGallery.map((imageUrl, index) => (
                 <Box
                   key={index}
                   sx={{
                     position: "relative",
                     cursor: "pointer",
-                    border: selectedImage === imageUrl ? "2px solid #fff" : "2px solid transparent",
-                    '&:hover': { border: "2px solid #000" },
+                    border: "2px solid transparent",
+                    "&:hover": { border: "2px solid #000" },
                   }}
                   onClick={() => {
                     setImageModalOpen(false);
                     setImages([...images, imageUrl]);
                   }}
                 >
-                  <img src={imageUrl} alt={`Image ${index}`} style={{ width: "100%", borderRadius: 4 }} />
+                  <img
+                    src={imageUrl}
+                    alt={`Image ${index}`}
+                    style={{ width: "100%", borderRadius: 4 }}
+                  />
                 </Box>
               ))}
             </Box>
           </Stack>
-          <Button variant="outlined" sx={{ mt: 2, width: "100%" }} onClick={() => setImageModalOpen(false)}>
+          <Button
+            variant="outlined"
+            sx={{ mt: 2, width: "100%" }}
+            onClick={() => setImageModalOpen(false)}
+          >
             Cancel
           </Button>
         </Box>
-
       </Modal>
       <BottomNavBar />
     </>

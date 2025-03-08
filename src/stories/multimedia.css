@@ -20,7 +20,6 @@
   transform: translate(30px, -30px);
 }
 
-
 .corner-element-X {
   width: 40px;
   height: 40px;
@@ -28,7 +27,6 @@
   z-index: 1;
   transform: translate(125%, -120%);
 }
-
 
 .corner-element-X:hover {
   filter: brightness(80%);
