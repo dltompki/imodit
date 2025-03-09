@@ -19,6 +19,9 @@ interface ProjectStepsPageProps {
   setProjects: (projects: Project[]) => void;
 }
 
+export const imageGallery = [engine, hoist];
+
+
 export function StepDetailPage(props: ProjectStepsPageProps) {
   const { id, stepId } = useParams();
 
@@ -40,8 +43,7 @@ export function StepDetailPage(props: ProjectStepsPageProps) {
   const [imageModalOpen, setImageModalOpen] = React.useState<boolean>(false);
   const [images, setImages] = React.useState<string[]>(step.images);
 
-  const imageGallery = [engine, hoist];
-
+  
   return (
     <>
       <Topbar
