@@ -1,6 +1,6 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import { Button } from "@mui/material";
+import { Button, Snackbar } from "@mui/material";
 import { Typography } from "@mui/material";
 import BottomNavBar from "./BottomNavBar";
 import { Topbar } from "./Topbar";
@@ -30,10 +30,46 @@ export function PublishProject(props: ProjectStepsPageProps) {
 
   const [coverImage, setCoverImage] = React.useState<string | null>(null);
 
+  // Snackbar state
+  const [snackbarOpen, setSnackbarOpen] = React.useState(false);
+
+  // Handle Snackbar close
+  const handleSnackbarClose = (
+    _: React.SyntheticEvent | Event,
+    reason?: string,
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setSnackbarOpen(false);
+  };
+
+  const handleSubmit = () => {
+    if (coverImage === null) {
+      setSnackbarOpen(true); // Show Snackbar if no cover image is selected
+      return;
+    }
+
+    const newProject = { ...project };
+    newProject.image = coverImage!;
+    newProject.being_reviewed = true;
+
+    const newProjects = props.projects.map((p) => {
+      if (p.id === project_id) {
+        return newProject;
+      }
+      return p;
+    });
+
+    props.setProjects(newProjects);
+
+    void navigation("/create/");
+  };
+
   return (
     <>
       <Topbar
-        title={"Publis h" + project.title}
+        title={"Publish " + project.title}
         leftButtonText="BackIcon"
         leftButtonAction={() => {
           void navigation("/create/" + project_id);
@@ -114,27 +150,21 @@ export function PublishProject(props: ProjectStepsPageProps) {
         color="primary"
         aria-label="add"
         variant="contained"
-        disabled={coverImage === null}
+        //disabled={coverImage === null}
         sx={fabStyle}
-        onClick={() => {
-          const newProject = { ...project };
-          newProject.image = coverImage!;
-          newProject.being_reviewed = true;
-
-          const newProjects = props.projects.map((p) => {
-            if (p.id === project_id) {
-              return newProject;
-            }
-            return p;
-          });
-
-          props.setProjects(newProjects);
-
-          void navigation("/create/");
-        }}
+        onClick={handleSubmit}
       >
         Submit for Review
       </Button>
+
+      {/* Snackbar for feedback */}
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={3000}
+        onClose={handleSnackbarClose}
+        message="Please select a cover image before submitting!"
+      />
+
       <BottomNavBar />
     </>
   );
