@@ -1,4 +1,4 @@
-import { Fab } from "@mui/material";
+import { Button, Fab } from "@mui/material";
 import { Box, Stack, Typography } from "@mui/material";
 import BottomNavBar from "./BottomNavBar";
 import { Topbar } from "./Topbar";
@@ -34,12 +34,6 @@ export function ProjectStepsPage(props: ProjectStepsPageProps) {
     props.setProjects([...props.projects]);
   }
 
-  const fabStyle = {
-    position: "absolute",
-    bottom: 72,
-    right: 16,
-  };
-
   return (
     <>
       <Topbar
@@ -65,23 +59,18 @@ export function ProjectStepsPage(props: ProjectStepsPageProps) {
           alignItems: "center",
         }}
       >
-        {props.projects.length == 0 ? (
-          <Typography
-            variant="subtitle1"
-            component="div"
-            sx={{ top: 100, position: "absolute" }}
-          >
-            No steps yet. Click the button below to create one.
-          </Typography>
-        ) : (
-          <></>
-        )}
-
         <Stack
           direction="column"
           spacing={2}
           sx={{ top: 80, position: "absolute" }}
         >
+          {project.steps.length == 0 ? (
+            <Typography variant="subtitle1" component="div">
+              No steps yet. Click the button below to create one.
+            </Typography>
+          ) : (
+            <></>
+          )}
           {project.steps.map((step) => {
             const newStep = { ...step };
             newStep.title = step.id + 1 + ". " + step.title;
@@ -97,44 +86,44 @@ export function ProjectStepsPage(props: ProjectStepsPageProps) {
               />
             );
           })}
+          <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <Button
+              variant="outlined"
+              sx={{ width: "fit-content" }}
+              onClick={() => {
+                // Create new step
+                const newStep = {
+                  title: "",
+                  description: "",
+                  id: project.steps.length,
+                  images: [],
+                  threeDImages: [],
+                  safetyEquipment: [],
+                  tools: [],
+                };
+
+                // Update project
+                const newProject = {
+                  ...project,
+                  steps: [...project.steps, newStep],
+                };
+
+                const newProjects = props.projects.map((p) => {
+                  if (p.id === project_id) {
+                    return newProject;
+                  }
+                  return p;
+                });
+
+                props.setProjects(newProjects);
+
+                void navigation("/create/" + project_id + "/" + newStep.id);
+              }}
+            >
+              Add Step
+            </Button>
+          </Box>
         </Stack>
-
-        <Fab
-          color="primary"
-          aria-label="add"
-          sx={fabStyle}
-          onClick={() => {
-            // Create new step
-            const newStep = {
-              title: "",
-              description: "",
-              id: project.steps.length,
-              images: [],
-              threeDImages: [],
-              safetyEquipment: [],
-              tools: [],
-            };
-
-            // Update project
-            const newProject = {
-              ...project,
-              steps: [...project.steps, newStep],
-            };
-
-            const newProjects = props.projects.map((p) => {
-              if (p.id === project_id) {
-                return newProject;
-              }
-              return p;
-            });
-
-            props.setProjects(newProjects);
-
-            void navigation("/create/" + project_id + "/" + newStep.id);
-          }}
-        >
-          <AddIcon />
-        </Fab>
       </Box>
       <BottomNavBar />
     </>
