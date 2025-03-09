@@ -9,7 +9,7 @@ const videoConstraints = {
   height: 720,
   facingMode: "user",
 };
-export function CameraView() {
+export function CameraView({ onCapture }: { onCapture: () => void }) {
   const webcamRef = useRef<Webcam>(null);
   const outerRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
@@ -31,7 +31,8 @@ export function CameraView() {
   const capture = useCallback(() => {
     // this function returns a photo if we want it
     webcamRef.current?.getScreenshot();
-  }, [webcamRef]);
+    onCapture();
+  }, [webcamRef, onCapture]);
   return (
     <Box ref={outerRef} sx={{ height: "100vh" }}>
       <Box height="10%" />
@@ -51,12 +52,7 @@ export function CameraView() {
           justifyContent: "center",
         }}
       >
-        <Button
-          component={Link}
-          to={Paths.checklist}
-          variant="contained"
-          onClick={capture}
-        >
+        <Button variant="contained" onClick={capture}>
           Capture photo
         </Button>
       </Box>
