@@ -1,8 +1,6 @@
 import { Box, Button } from "@mui/material";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
 import Webcam from "react-webcam";
-import Paths from "./flows/paths";
 
 const videoConstraints = {
   width: 1280,
