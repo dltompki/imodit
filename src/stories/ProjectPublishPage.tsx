@@ -7,7 +7,7 @@ import { Topbar } from "./Topbar";
 import { Project } from "../App";
 import { useNavigate, useParams } from "react-router-dom";
 import { Multimedia } from "./Multimedia";
-import { imageGallery } from "./StepDetailPage";
+import { imageGallery } from "./ImageStorage";
 
 interface ProjectStepsPageProps {
   projects: Project[];
@@ -31,9 +31,9 @@ export function PublishProject(props: ProjectStepsPageProps) {
 
   const [coverImage, setCoverImage] = React.useState<string | null>(null);
   const [imageModalOpen, setImageModalOpen] = React.useState<boolean>(false);
-  const [images, setImages] = React.useState<string[]>(project.steps.flatMap((step) => step.images));
-
-
+  const [images, setImages] = React.useState<string[]>(
+    project.steps.flatMap((step) => step.images),
+  );
 
   return (
     <>
@@ -71,31 +71,13 @@ export function PublishProject(props: ProjectStepsPageProps) {
             gridTemplateColumns: "1fr 1fr 1fr",
           }}
         >
-          {images.map((image) =>  {
-              if (coverImage === image) {
-                return (
-                  <div
-                    key={image}
-                    style={{
-                      border: "4px solid red",
-                      borderRadius: "10px",
-                      margin: "0.5rem",
-                      padding: "0.5rem",
-                    }}
-                  >
-                    <Multimedia
-                      image={image}
-                      onClick={() => {
-                        setCoverImage(image);
-                      }}
-                    />
-                  </div>
-                );
-              }
+          {images.map((image) => {
+            if (coverImage === image) {
               return (
                 <div
                   key={image}
                   style={{
+                    border: "4px solid red",
                     borderRadius: "10px",
                     margin: "0.5rem",
                     padding: "0.5rem",
@@ -109,17 +91,37 @@ export function PublishProject(props: ProjectStepsPageProps) {
                   />
                 </div>
               );
+            }
+            return (
+              <div
+                key={image}
+                style={{
+                  borderRadius: "10px",
+                  margin: "0.5rem",
+                  padding: "0.5rem",
+                }}
+              >
+                <Multimedia
+                  image={image}
+                  onClick={() => {
+                    setCoverImage(image);
+                  }}
+                />
+              </div>
+            );
           })}
           <div
-              style={{
-                borderRadius: "10px",
-                margin: "0.5rem",
-                padding: "0.5rem",
+            style={{
+              borderRadius: "10px",
+              margin: "0.5rem",
+              padding: "0.5rem",
+            }}
+          >
+            <Multimedia
+              onClick={() => {
+                setImageModalOpen(true);
               }}
-            >
-            <Multimedia onClick={() => {
-              setImageModalOpen(true);
-            }}/>
+            />
           </div>
         </div>
       </Box>
@@ -183,7 +185,7 @@ export function PublishProject(props: ProjectStepsPageProps) {
                 gap: 2,
               }}
             >
-              {imageGallery.map((imageUrl, index) => (
+              {imageGallery.map((imageUrl: string, index: number) => (
                 <Box
                   key={index}
                   sx={{
