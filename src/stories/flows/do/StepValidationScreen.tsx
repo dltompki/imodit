@@ -23,7 +23,7 @@ const StepValidationScreen: React.FC = () => {
 
   return (
     <>
-      <Topbar title="Step 3: Validate your System" />
+      <Topbar title="Step 3: Validate your System" leftButtonText="HomeIcon" />
 
       <Box
         sx={{

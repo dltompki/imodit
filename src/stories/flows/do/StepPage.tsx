@@ -20,7 +20,7 @@ const StepPage: React.FC<StepPageProps> = (props: StepPageProps) => {
 
   return (
     <>
-      <Topbar title={props.title} />
+      <Topbar title={props.title} leftButtonText="HomeIcon" />
       <Step
         image={props.image}
         caption={props.caption}
