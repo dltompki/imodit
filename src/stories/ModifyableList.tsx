@@ -15,16 +15,15 @@ interface ModifyableListProps {
   equpmentList: string[];
   setEquipmentList: (equipment: string[]) => void;
   placeholder: string;
+  onAdd: (value: string) => void;
 }
 
 export function ModifyableList(props: ModifyableListProps) {
   const [newItem, setNewItem] = useState("");
 
   const handleAdd = () => {
-    if (newItem.trim()) {
-      props.setEquipmentList([...props.equpmentList, newItem]);
-      setNewItem("");
-    }
+    props.onAdd(newItem); // Using the onAdd function passed down from parent
+    setNewItem("");
   };
 
   const handleRemove = (index: number) => {
