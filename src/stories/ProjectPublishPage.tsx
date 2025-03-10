@@ -166,7 +166,6 @@ export function PublishProject(props: ProjectStepsPageProps) {
         color="primary"
         aria-label="add"
         variant="contained"
-        //disabled={coverImage === null}
         sx={fabStyle}
         onClick={handleSubmit}
       >
