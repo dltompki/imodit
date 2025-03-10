@@ -1,7 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import { Button, Modal } from "@mui/material";
+import { Button, Modal, Snackbar, Alert } from "@mui/material";
 import { Stack, Typography } from "@mui/material";
 import BottomNavBar from "./BottomNavBar";
 import { Topbar } from "./Topbar";
@@ -37,6 +37,37 @@ export function StepDetailPage(props: ProjectStepsPageProps) {
   const [tools, setTools] = React.useState<string[]>(step.tools);
   const [imageModalOpen, setImageModalOpen] = React.useState<boolean>(false);
   const [images, setImages] = React.useState<string[]>(step.images);
+
+  const [snackbarOpen, setSnackbarOpen] = React.useState(false); // Snackbar state
+  const [snackbarMessage, setSnackbarMessage] = React.useState(""); // Snackbar message
+
+  const handleAddSafetyEquipment = (value: string) => {
+    if (value.trim() === "") {
+      setSnackbarMessage("Please enter a safety equipment item!");
+      setSnackbarOpen(true);
+      return;
+    }
+    setSafetyEquipment([...safetyEquipment, value]);
+  };
+
+  const handleAddTool = (value: string) => {
+    if (value.trim() === "") {
+      setSnackbarMessage("Please enter a tool!");
+      setSnackbarOpen(true);
+      return;
+    }
+    setTools([...tools, value]);
+  };
+
+  const handleSnackbarClose = (
+    _: React.SyntheticEvent | Event,
+    reason?: string,
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setSnackbarOpen(false);
+  };
 
   return (
     <>
@@ -136,6 +167,7 @@ export function StepDetailPage(props: ProjectStepsPageProps) {
               setEquipmentList={setSafetyEquipment}
               sectionHeading="Safety Equipment for this Step"
               placeholder="Add Safety Equipment"
+              onAdd={handleAddSafetyEquipment}
             />
 
             <ModifyableList
@@ -143,6 +175,7 @@ export function StepDetailPage(props: ProjectStepsPageProps) {
               setEquipmentList={setTools}
               sectionHeading="Tools for this Step"
               placeholder="Add Tools"
+              onAdd={handleAddTool}
             />
 
             <Typography variant="h6" align="left" color="gray" sx={{ m: 3 }}>
@@ -176,6 +209,18 @@ export function StepDetailPage(props: ProjectStepsPageProps) {
           </div>
         </Box>
       </Box>
+
+      {/* Snackbar for feedback */}
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={3000}
+        onClose={handleSnackbarClose}
+      >
+        <Alert severity="error" variant="filled" sx={{ width: "100%" }}>
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
+
       <Modal
         open={imageModalOpen}
         aria-labelledby="modal-modal-title"
