@@ -3,7 +3,8 @@ import BottomNavBar from "./BottomNavBar";
 import { Step } from "./Step";
 import { Topbar } from "./Topbar";
 import { useState } from "react";
-import { ArrowForwardIos } from "@mui/icons-material";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { LearnFeedback } from "./LearnFeedback";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -79,17 +80,7 @@ export const LearnGuidePage = () => {
 
   return (
     <>
-      <Topbar
-        title="Learn"
-        leftButtonText="BackIcon"
-        leftButtonAction={
-          page == 0
-            ? () => {
-                void navigation(`/learn/${carId}/${systemId}`);
-              }
-            : handlePreviousPage
-        }
-      ></Topbar>
+      <Topbar title="Learn" leftButtonText="HomeIcon"></Topbar>
       <Box
         sx={{
           height: "80dvh",
@@ -116,12 +107,28 @@ export const LearnGuidePage = () => {
         </Box>
         <LearnFeedback visible={feedback} />
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "end" }}>
+      <Box
+        sx={{ display: "flex", justifyContent: "space-between", pl: 2, pr: 2 }}
+      >
+        <Button
+          onClick={
+            page == 0
+              ? () => {
+                  void navigation(`/learn/${carId}/${systemId}`);
+                }
+              : handlePreviousPage
+          }
+          variant="outlined"
+          sx={{ color: "black", borderColor: "black" }}
+          startIcon={<ArrowBackIosNewIcon></ArrowBackIosNewIcon>}
+        >
+          Prev
+        </Button>
         <Button
           onClick={handleNextPage}
-          sx={{ alignSelf: "end", color: "black", borderColor: "black" }}
+          sx={{ color: "black", borderColor: "black" }}
           variant="outlined"
-          endIcon={<ArrowForwardIos></ArrowForwardIos>}
+          endIcon={<ArrowForwardIosIcon></ArrowForwardIosIcon>}
         >
           {feedback ? "Finish" : "Next"}
         </Button>
