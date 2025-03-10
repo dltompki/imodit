@@ -3,7 +3,8 @@ import BottomNavBar from "./BottomNavBar";
 import { Step } from "./Step";
 import { Topbar } from "./Topbar";
 import { useState } from "react";
-import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { LearnFeedback } from "./LearnFeedback";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -119,7 +120,7 @@ export const LearnGuidePage = () => {
           }
           variant="outlined"
           sx={{ color: "black", borderColor: "black" }}
-          startIcon={<ArrowBackIos></ArrowBackIos>}
+          startIcon={<ArrowBackIosNewIcon></ArrowBackIosNewIcon>}
         >
           Prev
         </Button>
@@ -127,7 +128,7 @@ export const LearnGuidePage = () => {
           onClick={handleNextPage}
           sx={{ color: "black", borderColor: "black" }}
           variant="outlined"
-          endIcon={<ArrowForwardIos></ArrowForwardIos>}
+          endIcon={<ArrowForwardIosIcon></ArrowForwardIosIcon>}
         >
           {feedback ? "Finish" : "Next"}
         </Button>
