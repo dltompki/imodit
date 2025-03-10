@@ -10,9 +10,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ModifyableList } from "./ModifyableList";
 import { Multimedia } from "./Multimedia";
 import ImageWithClose from "./ImageWithClose";
-
-import engine from "./assets/engine.png";
-import hoist from "./assets/hoist.png";
+import { imageGallery } from "./ImageStorage";
 
 interface ProjectStepsPageProps {
   projects: Project[];
@@ -39,8 +37,6 @@ export function StepDetailPage(props: ProjectStepsPageProps) {
   const [tools, setTools] = React.useState<string[]>(step.tools);
   const [imageModalOpen, setImageModalOpen] = React.useState<boolean>(false);
   const [images, setImages] = React.useState<string[]>(step.images);
-
-  const imageGallery = [engine, hoist];
 
   return (
     <>
