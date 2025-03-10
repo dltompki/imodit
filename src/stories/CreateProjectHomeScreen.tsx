@@ -69,6 +69,9 @@ export function CreateProjectHomeScreen(props: CreateProjectProps) {
                   key={project.id}
                   {...project}
                   description="Being Reviewed..."
+                  onDelete={() => {
+                    handleDeleteProject(project.id);
+                  }}
                 />
               );
             }
