@@ -1,8 +1,7 @@
-import { Button, Fab } from "@mui/material";
+import { Button } from "@mui/material";
 import { Box, Stack, Typography } from "@mui/material";
 import BottomNavBar from "./BottomNavBar";
 import { Topbar } from "./Topbar";
-import AddIcon from "@mui/icons-material/Add";
 import { Project } from "../App";
 import { useNavigate, useParams } from "react-router-dom";
 import ProjectCard from "./ProjectCard";

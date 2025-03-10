@@ -1,5 +1,4 @@
-import { Box, Fab, Stack, Typography } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
+import { Box, Button, Stack, Typography } from "@mui/material";
 
 import { Topbar } from "./Topbar";
 import BottomNavBar from "./BottomNavBar";
@@ -16,12 +15,6 @@ interface CreateProjectProps {
 
 export function CreateProjectHomeScreen(props: CreateProjectProps) {
   const navigation = useNavigate();
-
-  const fabStyle = {
-    position: "absolute",
-    bottom: 72,
-    right: 16,
-  };
 
   function handleDeleteProject(projectToDelete: number) {
     const newProjects = props.projects.filter((project) => {
@@ -45,23 +38,18 @@ export function CreateProjectHomeScreen(props: CreateProjectProps) {
           alignItems: "center",
         }}
       >
-        {props.projects.length == 0 ? (
-          <Typography
-            variant="subtitle1"
-            component="div"
-            sx={{ top: 100, position: "absolute" }}
-          >
-            No projects yet. Click the button below to create one.
-          </Typography>
-        ) : (
-          <></>
-        )}
-
         <Stack
           direction="column"
           spacing={2}
           sx={{ top: 80, position: "absolute" }}
         >
+          {props.projects.length == 0 ? (
+            <Typography variant="subtitle1" component="div">
+              No projects yet. Click the button below to create one.
+            </Typography>
+          ) : (
+            <></>
+          )}
           {props.projects.map((project) => {
             if (project.being_reviewed) {
               return (
@@ -86,18 +74,18 @@ export function CreateProjectHomeScreen(props: CreateProjectProps) {
               />
             );
           })}
+          <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <Button
+              variant="outlined"
+              sx={{ width: "fit-content" }}
+              onClick={() => {
+                void navigation("/create/name");
+              }}
+            >
+              Create Project
+            </Button>
+          </Box>
         </Stack>
-
-        <Fab
-          color="primary"
-          aria-label="add"
-          sx={fabStyle}
-          onClick={() => {
-            void navigation("/create/name");
-          }}
-        >
-          <AddIcon />
-        </Fab>
       </Box>
       <BottomNavBar />
     </>
