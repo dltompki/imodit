@@ -37,10 +37,7 @@ const CaptureSafteyEquipmentScreen: React.FC = () => {
 
   return (
     <Box width="100vw">
-      <Topbar 
-        title="Safety Verification" 
-        leftButtonText="HomeIcon"
-        />
+      <Topbar title="Safety Verification" leftButtonText="HomeIcon" />
       <CameraView
         onCapture={() => {
           setOpen(true);
