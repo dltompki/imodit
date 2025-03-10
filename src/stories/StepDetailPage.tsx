@@ -41,8 +41,6 @@ export function StepDetailPage(props: ProjectStepsPageProps) {
   const [snackbarOpen, setSnackbarOpen] = React.useState(false); // Snackbar state
   const [snackbarMessage, setSnackbarMessage] = React.useState(""); // Snackbar message
 
-  const imageGallery = [engine, hoist];
-
   const handleAddSafetyEquipment = (value: string) => {
     if (value.trim() === "") {
       setSnackbarMessage("Please enter a safety equipment item!");
