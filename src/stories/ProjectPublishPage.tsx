@@ -1,6 +1,6 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import { Button, Modal, Stack } from "@mui/material";
+import { Alert, Button, Modal, Snackbar, Stack } from "@mui/material";
 import { Typography } from "@mui/material";
 import BottomNavBar from "./BottomNavBar";
 import { Topbar } from "./Topbar";
@@ -35,10 +35,46 @@ export function PublishProject(props: ProjectStepsPageProps) {
     project.steps.flatMap((step) => step.images),
   );
 
+  // Snackbar state
+  const [snackbarOpen, setSnackbarOpen] = React.useState(false);
+
+  // Handle Snackbar close
+  const handleSnackbarClose = (
+    _: React.SyntheticEvent | Event,
+    reason?: string,
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setSnackbarOpen(false);
+  };
+
+  const handleSubmit = () => {
+    if (coverImage === null) {
+      setSnackbarOpen(true); // Show Snackbar if no cover image is selected
+      return;
+    }
+
+    const newProject = { ...project };
+    newProject.image = coverImage!;
+    newProject.being_reviewed = true;
+
+    const newProjects = props.projects.map((p) => {
+      if (p.id === project_id) {
+        return newProject;
+      }
+      return p;
+    });
+
+    props.setProjects(newProjects);
+
+    void navigation("/create/");
+  };
+
   return (
     <>
       <Topbar
-        title={"Publish" + project.title}
+        title={"Publish " + project.title}
         leftButtonText="BackIcon"
         leftButtonAction={() => {
           void navigation("/create/" + project_id);
@@ -130,27 +166,23 @@ export function PublishProject(props: ProjectStepsPageProps) {
         color="primary"
         aria-label="add"
         variant="contained"
-        disabled={coverImage === null}
         sx={fabStyle}
-        onClick={() => {
-          const newProject = { ...project };
-          newProject.image = coverImage!;
-          newProject.being_reviewed = true;
-
-          const newProjects = props.projects.map((p) => {
-            if (p.id === project_id) {
-              return newProject;
-            }
-            return p;
-          });
-
-          props.setProjects(newProjects);
-
-          void navigation("/create/");
-        }}
+        onClick={handleSubmit}
       >
         Submit for Review
       </Button>
+
+      {/* Snackbar for feedback */}
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={2000}
+        onClose={handleSnackbarClose}
+      >
+        <Alert severity="error" variant="filled" sx={{ width: "100%" }}>
+          Please select a cover image before submitting!
+        </Alert>
+      </Snackbar>
+
       <Modal
         open={imageModalOpen}
         aria-labelledby="modal-modal-title"
